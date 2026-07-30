@@ -1,111 +1,190 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  --c-primary: #6cb9b7;
+  --c-accent: #f6333f;
+  --c-deep: #3b3561;
+  --c-rose: #dd7373;
+  --c-sun: #ead94c;
+  --c-sage: #6e9887;
+  --c-gray: #d1d1d1;
+  --c-dark-gray: #323232;
+  --bg: #f7fafb;
+  --card: #ffffff;
+  --text: #1e2430;
+  --muted: #5a6475;
+  --shadow: 0 10px 25px rgba(0, 0, 0, .08);
+  --radius: 16px;
+  --font-title: "Billy Ohio", "Billy Ohio Accent", "Montserrat", serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+@font-face {
+  font-family: "Billy Ohio";
+  src: url("./assets/fonts/BillyOhio.ttf") format("truetype");
+  font-display: swap;
+}
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+@font-face {
+  font-family: "Billy Ohio Accent";
+  src: url("./assets/fonts/DakwartLetter.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+00C1, U+00C9, U+00CD, U+00D1, U+00D3, U+00DA, U+00DC,
+    U+00E1, U+00E9, U+00ED, U+00F1, U+00F3, U+00FA, U+00FC;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/fonts/Montserrat-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/fonts/Montserrat-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/fonts/Montserrat-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
 }
 
 body {
   margin: 0;
+  font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
 }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Clases de utilidad tipográfica y títulos institucionales */
+.title-font {
+  font-family: var(--font-title);
+  font-weight: 400;
+  color: var(--c-primary);
+}
+
+.h1 {
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: 48px;
+  margin: 0 0 8px 0;
+  color: var(--c-deep);
+}
+
+.h2 {
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: 38px;
+  margin: 0 0 8px 0;
+  color: var(--c-deep);
+}
+
+.subtitle {
+  margin: 0 0 16px 0;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* Tarjetas y contenedores base */
+.card-custom {
+  background: var(--card);
+  border: 1px solid rgba(0, 0, 0, .06);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.quote {
+  border-left: 4px solid var(--c-primary);
+  padding: 10px 12px;
+  background: rgba(108, 185, 183, .07);
+  border-radius: 12px;
+  color: var(--c-deep);
+  white-space: pre-line;
+}
+
+.notice {
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(234, 217, 76, .20);
+  border: 1px solid rgba(234, 217, 76, .45);
+  color: var(--c-deep);
+  line-height: 1.45;
+}
+
+.kudos {
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(108, 185, 183, .10);
+  border: 1px solid rgba(108, 185, 183, .25);
+  color: var(--c-deep);
+  line-height: 1.45;
+}
+
+.warn {
+  border: 1px solid rgba(246, 51, 63, .35);
+  background: rgba(246, 51, 63, .08);
+  color: var(--c-deep);
+  padding: 10px 12px;
+  border-radius: 14px;
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.bg-container {
+  background: #6cb9b68e;
+  background: linear-gradient(180deg,rgba(108, 185, 182, 0.503) 0%, rgba(255, 255, 255, 1) 15%);
+}
+
+.btn-accent {
+  background-color: var(--c-accent);
+  color: white;
+  font-weight: bold;
   text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+  &:hover {
+    background-color: #c7202b;
+    color: white;
   }
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
+
+.btn-gray {
+  background-color: white;
+  color: var(--text);
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid var(--c-gray);
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out, border-color 0.25s ease-in-out;
+
+  &:hover {
+    background-color: var(--c-primary);
+    color: white;
+    border: 1px solid  var(--c-primary);
   }
-}
-p {
-  margin: 0;
-}
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
 }

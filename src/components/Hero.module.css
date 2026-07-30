@@ -1,0 +1,37 @@
+.heroContainer {
+    box-shadow: 4px 4px 4px #6cb9b620;
+    border: 1px solid #6cb9b650;
+}
+
+.heroBadge {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #dc3545;
+    letter-spacing: 0.5px;
+}
+
+.heroTitle {
+    font-weight: 800;
+    color: #212529;
+    font-size: 3rem;
+
+    .heroTitleAccent {
+        font-family: var(--font-title);
+        color: var(--c-accent);
+        font-weight: 300;
+        font-size: 4rem;
+    }
+}
+
+.heroDescription {
+    font-size: 1.1rem;
+    color: #6c757d;
+    line-height: 1.6;
+}
+
+.heroImg {
+    width: 70%;
+    height: auto;
+    object-fit: cover;
+}

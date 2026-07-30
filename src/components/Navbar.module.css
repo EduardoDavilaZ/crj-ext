@@ -1,0 +1,18 @@
+.navbarSticky {
+    z-index: 1000;
+}
+
+.logoImg {
+    max-width: 200px;
+    height: auto;
+}
+
+.emoji {
+    width: 20px;
+    margin: 4px 4px 8px 4px;
+}
+
+.brandText {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
