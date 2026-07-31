@@ -1,19 +1,21 @@
 import { useState, useEffect } from 'react';
 import ProjectCard from './ProjectCard';
-import { getProjects } from '../services/projectService';
+import { projectService } from '../services/projectService';
 
 export default function Projects() {
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Llamamos al servicio para obtener los proyectos
-        getProjects()
+        projectService.getProjects() 
             .then((data) => {
                 setProjects(data);
                 setLoading(false);
             })
-            .catch((error) => console.error("Error cargando proyectos:", error));
+            .catch((error) => {
+                console.error("Error cargando proyectos:", error);
+                setLoading(false); 
+            });
     }, []);
 
     if (loading) {
@@ -32,7 +34,6 @@ export default function Projects() {
                             title={project.title}
                             description={project.description}
                             slug={project.slug}
-                            // Aquí construimos las rutas limpias basadas en tu estructura
                             link={`/proyecto/${project.slug}`}
                             formLink={`/apuntarme/${project.slug}`}
                             shifts={project.shifts}

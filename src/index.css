@@ -82,7 +82,12 @@ button {
   font-family: inherit;
 }
 
-/* Clases de utilidad tipográfica y títulos institucionales */
+.title-font {
+  font-family: var(--font-title);
+  font-weight: 400;
+  color: var(--c-primary);
+}
+
 .title-font {
   font-family: var(--font-title);
   font-weight: 400;
@@ -92,9 +97,9 @@ button {
 .h1 {
   font-family: var(--font-title);
   font-weight: 400;
-  font-size: 48px;
+  font-size: 4rem;
   margin: 0 0 8px 0;
-  color: var(--c-deep);
+  color: var(--c-primary);
 }
 
 .h2 {
@@ -109,6 +114,11 @@ button {
   margin: 0 0 16px 0;
   color: var(--muted);
   line-height: 1.4;
+}
+
+.link {
+  color: var(--c-accent);
+  padding: 0rem .25rem;
 }
 
 /* Tarjetas y contenedores base */
@@ -157,8 +167,8 @@ button {
 }
 
 .bg-container {
-  background: #6cb9b68e;
-  background: linear-gradient(180deg,rgba(108, 185, 182, 0.503) 0%, rgba(255, 255, 255, 1) 15%);
+  background: #6CB9B7;
+  background: linear-gradient(180deg,rgba(108, 185, 183, 1) 0%, rgba(247, 247, 247, 1) 15%);
 }
 
 .btn-accent {
@@ -188,3 +198,166 @@ button {
     border: 1px solid  var(--c-primary);
   }
 }
+
+.form-container {
+    width: 100%;
+    background-color: var(--bg);
+    box-shadow: 4px 4px 4px #6cb9b620;
+    border: 1px solid #6cb9b650;
+    border-radius: 1rem;
+    padding: .5rem 2rem;
+}
+
+@media (min-width: 992px) {
+    .form-container {
+        width: 50% !important;
+    }
+}
+
+.table-custom {
+    width: 98%;
+    margin: .75rem 0rem;
+    border-collapse: collapse;
+    color: var(--text);
+    font-size: 0.95rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 4px 4px 4px #6cb9b620;
+    border: 1px solid var(--c-primary);
+
+    & thead th {
+        background-color: #6cb9b620;
+        color: var(--text);
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 0.05em;
+        border-bottom: 2px solid var(--c-primary);
+        text-align: center;
+    }
+
+    & tbody td {
+        padding: .5rem 1rem;
+        vertical-align: middle;
+        border-bottom: 1px solid var(--c-primary);
+        color: #495057;
+
+        input[type="checkbox"] {
+            background-color: #6cb9b620;
+            border: 1px solid var(--c-primary);
+
+            &:checked {
+                background-color: var(--c-primary);
+                border-color: var(--c-primary);
+            }
+
+            &:focus {
+                border-color: var(--c-primary);
+                box-shadow: 0 0 0 0.25rem rgba(108, 185, 182, 0.25);
+            }
+        }
+    }
+
+    & tbody tr {
+        &:hover {
+            & td {
+                background-color: #6cb9b620;
+                color: #000;
+            }
+        }
+    }
+}
+
+.form-control {
+  &:focus {
+    border-color: var(--c-primary) !important;
+    box-shadow: 0 0 0 0.25rem rgba(108, 185, 182, 0.25) !important;
+  }
+}
+
+.datetime {
+  font-size: .9rem;
+  color: var(--muted);
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section {
+  box-shadow: 4px 4px 4px #6cb9b620;
+  border: 1px solid #6cb9b650;
+  padding: .75rem 1rem;
+  margin: 1rem 0rem;
+  border-radius: 1rem;
+
+  ul {
+    li {
+      font-size: .85rem;
+    }
+  }
+
+  .strong-text {
+    color: var(--c-deep);
+    font-weight: 600;
+    display: block;
+    margin-top: 1rem;
+  }
+
+  .phrase {
+    font-family: var(--font-title);
+    color: var(--c-accent);
+    font-size: 1.75rem;
+    display: block;
+    margin: .8rem auto;
+  }
+}
+
+.contact-card {
+  display: flex;
+  width: 100%;
+  margin: auto;
+  border: 1px solid var(--c-deep);
+  padding: .25rem .5rem;
+  box-shadow: 4px 4px 4px #6e988776;
+  border: 1px solid #6e988776;
+  border-radius: 1rem;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out, border-color 0.25s ease-in-out;
+
+  .contact-person {
+    width: 20%;
+    i{
+      font-size: 3rem;
+      color: var(--c-sage);
+    }
+  }
+
+  .contact-data {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 0rem 1.5rem;
+    
+    h4 {
+      font-size: 1.25rem;
+      margin: 0;
+    }
+    small {
+      font-size: .75rem;
+    }
+    a {
+      background-color: var(--c-sage);
+      color: white;
+      font-size: .65rem;
+      padding: .25rem;
+      border-radius: .25rem;
+    }
+  }
+
+  &:hover {
+    background-color: #6e988718;
+  }
+}                  

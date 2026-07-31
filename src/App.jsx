@@ -1,29 +1,32 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
+import Help from './pages/Help';
 
-// Importas las vistas específicas que ya tienes creadas en tus carpetas
 import InfanciaInfo from './features/projects/infancia-hospitalizada/InfoPage';
 import InfanciaForm from './features/projects/infancia-hospitalizada/Form';
 
 import ExitoInfo from './features/projects/exito-escolar/InfoPage';
 import ExitoForm from './features/projects/exito-escolar/Form';
 
-// Y así sucesivamente para los demás proyectos...
+import EspaciosInfo from './features/projects/espacios-educativos/InfoPage';
+import EspaciosForm from './features/projects/espacios-educativos/Form';
 
 export default function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/ayuda" element={<Help />} />
         
-        {/* Rutas estáticas/personalizadas por proyecto apuntando a su carpeta */}
         <Route path="/proyecto/infancia-hospitalizada" element={<InfanciaInfo />} />
         <Route path="/apuntarme/infancia-hospitalizada" element={<InfanciaForm />} />
 
         <Route path="/proyecto/exito-escolar" element={<ExitoInfo />} />
         <Route path="/apuntarme/exito-escolar" element={<ExitoForm />} />
+
+        <Route path="/proyecto/espacios-educativos" element={<EspaciosInfo />} />
+        <Route path="/apuntarme/espacios-educativos" element={<EspaciosForm />} />
         
-        {/* Próximos proyectos... */}
       </Routes>
     </Router>
   );

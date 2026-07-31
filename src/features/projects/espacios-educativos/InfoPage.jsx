@@ -1,10 +1,10 @@
 import MainLayout from '../../../layouts/MainLayout';
 
-export default function Form() {
+export default function InfoPage() {
     return (
         <MainLayout>
             <div>
-                Infanica form page
+                Espacios info page
             </div>
         </MainLayout>
     );

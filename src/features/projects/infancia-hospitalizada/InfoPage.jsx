@@ -1,7 +1,11 @@
+import MainLayout from '../../../layouts/MainLayout';
+
 export default function InfoPage() {
     return (
-        <div>
-            Infancia info page
-        </div>
+        <MainLayout>
+            <div>
+                Infanica info page
+            </div>
+        </MainLayout>
     );
 }

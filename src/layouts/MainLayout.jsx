@@ -3,7 +3,7 @@ import Footer from '../components/Footer';
 
 export default function MainLayout({ children }) {
     return (
-        <div className='bg-container'>
+        <div className='bg-container d-flex flex-column min-vh-100'>
             <Navbar />
 
             <main className="flex-fill container my-4">

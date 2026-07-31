@@ -7,8 +7,8 @@ export default function Hero() {
         <div className={`row bg-white rounded-3 align-items-center ${styles.heroContainer}`}>
             <div className="col col-12 col-md-7 p-4 text-center">
                 <span className={styles.heroBadge}>Bienvenido/a a Cruz Roja Juventud</span>
-                <h1 className={`${styles.heroTitle}`}>Jóvenes que 
-                    <span className={`${styles.heroTitleAccent}`}> transforman</span>
+                <h1 className={`${styles.heroTitle}`}>  
+                    <span className={`${styles.heroTitleAccent}`}>Si formas parte, toma parte</span>
                 </h1>
                 <p className={`mb-4 ${styles.heroDescription}`}>
                     Súmate al voluntariado que mueve Badajoz. Comparte tu energía, participa en proyectos reales y haz que las cosas pasen en tu ciudad.
@@ -30,7 +30,7 @@ export default function Hero() {
                         rel="noopener noreferrer" 
                         className="btn-gray px-4 py-2 rounded-3"
                     >
-                        Conócenos más
+                        <i class="bi bi-search-heart"></i> Conócenos más
                     </a>
                 </div>
             </div>
