@@ -47,7 +47,7 @@ export default function Help() {
             <div className='container'>
                 <h1 className='h1'>Bienvenid@ al canal de soporte y ayuda al voluntariado</h1>
                 <p className='subtitle'>
-                    En Cruz Roja, tu bienestar y tu experiencia en los proyectos son fundamentales. Este espacio está pensado exclusivamente para ti. Queremos asegurarnos de que cuentas con un canal directo, transparente y seguro donde puedas expresarte con total libertad.
+                    En Cruz Roja Juventud, tu bienestar y tu experiencia en los proyectos son fundamentales. Este espacio está pensado exclusivamente para ti. Queremos asegurarnos de que cuentas con un canal directo, transparente y seguro donde puedas expresarte con total libertad.
                 </p>
 
                 <section>
@@ -89,13 +89,28 @@ export default function Help() {
                         </div>
 
                         <div className='col p-3'>
+                            <div className='contact-card row'>
+                                <div className='contact-person center'>
+                                    <i className="bi bi-person-check"></i>
+                                </div>
+                                <div className='contact-data'>
+                                    <h4>Pilar Rubiano</h4>
+                                    <small>Voluntaria</small>
+                                    <a href="https://wa.me/34633601639?text=Hola,%20tengo%20una%20duda%20sobre%20el%20voluntariado." target="_blank" rel="noopener noreferrer">
+                                        <i className="bi bi-whatsapp"></i> Abrir chat de WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='col p-3'>
                             <div className='contact-card row m-0'>
                                 <div className='contact-person center'>
                                     <i className="bi bi-person-check"></i>
                                 </div>
                                 <div className='contact-data'>
                                     <h4>Eduardo Davila</h4>
-                                    <small>Voluntario</small>
+                                    <small>Voluntario, Founder & CEO</small>
                                     <a href="https://wa.me/34620094023?text=Hola,%20tengo%20una%20duda%20sobre%20el%20voluntariado." target="_blank" rel="noopener noreferrer">
                                         <i className="bi bi-whatsapp"></i> Abrir chat de WhatsApp
                                     </a>

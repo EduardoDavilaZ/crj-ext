@@ -30,7 +30,7 @@ export default function Hero() {
                         rel="noopener noreferrer" 
                         className="btn-gray px-4 py-2 rounded-3"
                     >
-                        <i class="bi bi-search-heart"></i> Conócenos más
+                        <i className="bi bi-search-heart"></i> Conócenos más
                     </a>
                 </div>
             </div>

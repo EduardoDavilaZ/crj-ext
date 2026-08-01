@@ -1,3 +1,4 @@
+import { useState } from 'react'; // <--- Asegúrate de importar useState
 import { useParams } from 'react-router-dom';
 import MainLayout from '../../../layouts/MainLayout';
 import LocationModal from '../../../components/modals/LocationModal';
@@ -7,6 +8,9 @@ import { getCurrentWeekRange } from '../../../utils/dateUtils';
 
 export default function Form() {
     const { slug } = useParams();
+
+    const [needsVest, setNeedsVest] = useState(false);
+
     const {
         name,
         setName,
@@ -19,7 +23,7 @@ export default function Form() {
         loading,
         handleCheckboxChange,
         handleSubmit
-    } = useProjectForm(slug || "infancia-hospitalizada", "Infancia Hospitalizada");
+    } = useProjectForm(slug || "espacio-propio", "Espacio Propio");
 
     return (
         <MainLayout>
@@ -28,12 +32,14 @@ export default function Form() {
 
                 <div>
                     <span className='subtitle'>
-                        Transforma las horas de hospital en momentos de juego y diversión. Inscríbete y colabora con nuestro voluntariado en el área de infancia hospitalizada.
+                        Apúntate al Punto Violeta de Cruz Roja Juventud. Ayúdanos a crear espacios de ocio seguros, libres de agresiones sexistas, y participa en acciones de sensibilización y prevención.
                     </span>
-                    <span className='kudos d-block my-2 datetime'>Horario: 18:00 - 20:00</span>
+                    <span className='kudos d-block my-2 datetime'>
+                        Horario: 19:00 - 01:00
+                    </span>
                 </div>
                 
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={(e) => handleSubmit(e, { needs_vest: needsVest })}>
                     <div className="my-2">
                         <label htmlFor="name" className='form-label fw-bold my-2'>Nombre y apellido</label>
                         <input 
@@ -60,6 +66,18 @@ export default function Form() {
                             </>
                         }
                     />
+
+                    <div className="my-4 form-check">
+                        <input 
+                            type="checkbox" 
+                            className="form-check-input" 
+                            name="needs_vest" 
+                            id="needs_vest"
+                            checked={needsVest}
+                            onChange={(e) => setNeedsVest(e.target.checked)}
+                        />
+                        <label htmlFor="needs_vest" className='form-check-label fw-bold'>¿Te hace falta chaleco o camiseta?</label>
+                    </div>
 
                     <div className="text-end">
                         <button type="submit" className="btn btn-accent px-4 mb-4 fw-semibold">

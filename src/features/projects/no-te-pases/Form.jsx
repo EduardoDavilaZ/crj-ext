@@ -19,7 +19,7 @@ export default function Form() {
         loading,
         handleCheckboxChange,
         handleSubmit
-    } = useProjectForm(slug || "infancia-hospitalizada", "Infancia Hospitalizada");
+    } = useProjectForm(slug || "no-te-pases", "No Te Pases");
 
     return (
         <MainLayout>
@@ -28,9 +28,9 @@ export default function Form() {
 
                 <div>
                     <span className='subtitle'>
-                        Transforma las horas de hospital en momentos de juego y diversión. Inscríbete y colabora con nuestro voluntariado en el área de infancia hospitalizada.
+                        ¡Promovemos la fiesta segura! Inscríbete y participa en espacios dinámicos y divertidos para disfrutar del ocio con cabeza.
                     </span>
-                    <span className='kudos d-block my-2 datetime'>Horario: 18:00 - 20:00</span>
+                    <span className='kudos d-block my-2 datetime'>Horario: 21:00 - 04:00</span>
                 </div>
                 
                 <form onSubmit={handleSubmit}>
@@ -55,7 +55,7 @@ export default function Form() {
                         setActiveLocation={setActiveLocation}
                         extraContent={
                             <>
-                                <label className='form-label fw-bold d-block mb-2'>Selecciona tus turnos por centro y día:</label>
+                                <label className='form-label fw-bold d-block mb-2'>Selecciona tus turnos:</label>
                                 <span className='kudos d-block datetime my-2'>{getCurrentWeekRange()}</span>
                             </>
                         }

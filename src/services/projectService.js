@@ -29,5 +29,15 @@ export const projectService = {
             console.error("Error al registrar el turno", error);
             throw error;
         }
+    },
+
+    getShiftsByProject: async (projectId) => {
+        try {
+            const response = await api.get(`/project/${projectId}/shifts`);
+            return response.data;
+        } catch (error) {
+            console.error("Error al obtener los turnos y ubicaciones del proyecto", error);
+            throw error;
+        }
     }
 };

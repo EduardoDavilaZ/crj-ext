@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import ProjectCard from './ProjectCard';
 import { projectService } from '../services/projectService';
+import catLoader from '../assets/cat-loader.gif'; // <--- Importas el GIF
 
 export default function Projects() {
     const [projects, setProjects] = useState([]);
@@ -19,7 +20,14 @@ export default function Projects() {
     }, []);
 
     if (loading) {
-        return <div className="text-center py-5">Cargando proyectos...</div>;
+        return (
+            <div className="center loader">
+                <img 
+                    src={catLoader}
+                    alt="Cargando proyectos..."
+                />
+            </div>
+        );
     }
 
     return (

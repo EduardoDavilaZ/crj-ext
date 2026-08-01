@@ -1,4 +1,3 @@
-// src/components/LocationModal.jsx
 export default function LocationModal({ location, onClose }) {
     if (!location) return null;
 
@@ -13,7 +12,7 @@ export default function LocationModal({ location, onClose }) {
                     <div className="modal-body">
                         <div className="row g-4 align-items-center">
                             <div className="col-md-6">
-                                <p className="text-secondary small mb-3">{location.description}</p>
+                                <p className="text-secondary subtitle mb-3">{location.description}</p>
                                 <img 
                                     src={location.img_path} 
                                     alt={location.name} 

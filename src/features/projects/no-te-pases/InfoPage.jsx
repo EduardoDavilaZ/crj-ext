@@ -4,9 +4,9 @@ export default function InfoPage() {
     return (
         <MainLayout>
             <div className='container'>
-                <h1 className='h1'>Infancia Hospitalizada</h1>
+                <h1 className='h1'>No Te Pases</h1>
                 <p className='subtitle'>
-                    Llevando la magia, el juego y la ilusión a los menores ingresados en el Hospital Materno Infantil
+                    ¡Promovemos la fiesta segura! Espacios dinámicos y divertidos para disfrutar del ocio con cabeza
                 </p>
 
                 <section>
@@ -14,17 +14,16 @@ export default function InfoPage() {
                         <div className='col-12 col-md-6'>
                             <h2 className='h2'>¿Qué se hace?</h2>
                             <p>
-                                Acompañamiento cercano a menores en la planta 7 del hospital Materno Infantil de Badajoz mediante dinámicas en el aula de juegos y habitaciones.
+                                Nos plantamos en el corazón de los botellones, institutos y recintos feriales con un espacio propio para conectar con la juventud y fomentar un ocio nocturno libre de riesgos.
                             </p>
                             <ul>
-                                <li><strong>Manualidades</strong>: Acompaña a los más pequeños en sus manualidades y talleres creativos diarios, ayudándoles a desarrollar su imaginación y pasar un rato divertido.</li>
-                                <li><strong>Juegos de mesa</strong>: Disfruta en el aula de juegos organizando dinámicas lúdicas, entretenimiento de mesa y divertidas actividades diseñadas para fomentar su alegría.</li>
-                                <li><strong>Acompañamiento</strong>: Forma parte del apoyo diario y la compañía cercana que se les brinda a los menores ingresados durante su estancia hospitalaria.</li>
+                                <li><strong>Dinamización</strong>: Dinamizamos sobre el consumo de sustancias haciendo juegos interactivos, pruebas y actividades lúdicas muy llamativas para atraer a todo el mundo.</li>
+                                <li><strong>Sensibilización</strong>: Hablamos sobre el uso de sustancias y sus consecuencias reales, informando sin rodeos y promoviendo la fiesta segura y la autoprotección.</li>
                             </ul>
                         </div>
 
                         <div className='col-12 col-md-6 center'>
-                            <img src="https://stockcrowd.s3.amazonaws.com/test/resources/sc/2022/050205/049_1.png" alt="crj" className='shadow-md rounded-2 w-75' />
+                            <img src="https://ondacerosur.es/wp-content/uploads/2024/09/CR-2.jpg" alt="crj" className='shadow-md rounded-2 w-50' />
                         </div>
                     </div>
                 </section>
@@ -38,7 +37,7 @@ export default function InfoPage() {
                             <div className='info-card row'>
                                 <h4>Asistencia</h4>
                                 <p>
-                                    El formulario se activa cada viernes a mediodía y el cuadrante se genera automáticamente. No olvides rellenar la hoja de firmas al llegar al aula.
+                                    Días antes del evento se pasarán los cuadrantes y horarios exactos de los turnos por cubrir. ¡Apunta tu disponibilidad con tiempo!
                                 </p>
                                 <i className="bi bi-list-check"></i>
                             </div>
@@ -48,7 +47,7 @@ export default function InfoPage() {
                             <div className='info-card row'>
                                 <h4>Ropa de CRJ</h4>
                                 <p>
-                                    Es obligatorio acudir uniformados. Si te hace falta un chaleco oficial, puedes encontrarlo disponible en el almacén B-69, situado justo frente a recepción.
+                                    Es obligatorio ir identificados. Si te hace falta chaleco oficial o camiseta, te lo proporcionamos sin problema.
                                 </p>
                                 <i className="bi bi-person-check-fill"></i>
                             </div>
@@ -56,21 +55,21 @@ export default function InfoPage() {
 
                         <div className='col p-4'>
                             <div className='info-card row'>
-                                <h4>Certificado DS</h4>
+                                <h4>Material lúdico</h4>
                                 <p>
-                                    Al trabajar directamente con menores, debes enviar obligatoriamente a la técnico tu Certificado Negativo de Delitos Sexuales actualizado de forma semestral.
+                                    Llevamos gafas de simulación, ruletas, juegos de mesa y dinámicas interactivas listas para romper el hielo y conectar con la gente.
                                 </p>
-                                <i className="bi bi-file-earmark-x"></i>
+                                <i className="bi bi-controller"></i>
                             </div>
                         </div>
 
                         <div className='col p-4'>
                             <div className='info-card row'>
-                                <h4>Horario</h4>
+                                <h4>Ubicación</h4>
                                 <p>
-                                    La actividad se realiza de 18:00 a 20:00 en verano y de 17:30 a 19:30 el resto del año, los martes, jueves y viernes bajo un turno rotativo de 2 veces al mes.
+                                    Nos instalamos estratégicamente en recintos feriales, zonas de ocio nocturno, botellones y centros educativos.
                                 </p>
-                                <i class="bi bi-clock"></i>
+                                <i className="bi bi-geo-alt-fill"></i>
                             </div>
                         </div>
 
