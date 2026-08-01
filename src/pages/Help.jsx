@@ -110,7 +110,7 @@ export default function Help() {
                                 </div>
                                 <div className='contact-data'>
                                     <h4>Eduardo Davila</h4>
-                                    <small>Voluntario, Founder & CEO</small>
+                                    <small>Voluntario</small>
                                     <a href="https://wa.me/34620094023?text=Hola,%20tengo%20una%20duda%20sobre%20el%20voluntariado." target="_blank" rel="noopener noreferrer">
                                         <i className="bi bi-whatsapp"></i> Abrir chat de WhatsApp
                                     </a>

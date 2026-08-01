@@ -37,7 +37,31 @@ export const getExactDateForDay = (dayParam) => {
     return targetDate.toISOString().split('T')[0];
 };
 
-export const getCurrentWeekRange = () => {
+/**
+ * Calcula el rango de la semana. 
+ * Si el proyecto tiene turnos con fechas fijas (YYYY-MM-DD), calcula el rango basándose en esas fechas.
+ * Si es un proyecto ordinario (días de la semana), usa la lógica del viernes a las 12:00.
+ */
+// src/utils/dateUtils.js
+
+export const getCurrentWeekRange = (project = {}, shifts = []) => {
+    if (project.project_type === 'occasional') {
+        const fixedDateShifts = shifts.filter(s => s.date && /^\d{4}-\d{2}-\d{2}$/.test(s.date));
+        
+        if (fixedDateShifts.length > 0) {
+            const dates = fixedDateShifts.map(s => new Date(s.date));
+            const minDate = new Date(Math.min(...dates));
+            const maxDate = new Date(Math.max(...dates));
+
+            const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+            
+            if (minDate.toDateString() === maxDate.toDateString()) {
+                return `para el día ${minDate.toLocaleDateString('es-ES', options)}`;
+            }
+            return `del ${minDate.toLocaleDateString('es-ES', options)} al ${maxDate.toLocaleDateString('es-ES', options)}`;
+        }
+    }
+
     const now = new Date();
     const currentDayOfWeek = now.getDay();
     const currentHour = now.getHours();

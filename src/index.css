@@ -237,6 +237,7 @@ button {
     overflow: hidden;
     box-shadow: 4px 4px 4px #6cb9b620;
     border: 1px solid var(--c-primary);
+    table-layout:auto;
 
     & thead th {
         background-color: #6cb9b620;
@@ -246,14 +247,37 @@ button {
         font-size: 0.8rem;
         letter-spacing: 0.05em;
         border-bottom: 2px solid var(--c-primary);
+        border-right: 1px solid var(--c-primary);
         text-align: center;
+        vertical-align: middle;
+        padding: 0.75rem;
+    }
+
+    & .th-locations {
+        width: 20%;
+        border-bottom: none !important;
+    }
+
+    & .th-slot, 
+    & tbody td:not(.td-location-name) {
+        min-width: 90px;
+        max-width: 120px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     & tbody td {
-        padding: .5rem 1rem;
+        padding: .5rem .5rem;
         vertical-align: middle;
         border-bottom: 1px solid var(--c-primary);
+        border-right: 1px solid var(--c-primary);
         color: #495057;
+    }
+
+    & tbody td.td-location-name {
+        text-align: left;
+        font-weight: 600;
     }
 
     & tbody tr {

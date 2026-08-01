@@ -34,7 +34,6 @@ export default function ShiftTable({
     const hasMultipleShiftsPerDay = shifts.some(shift => shift.start_time); 
     const uniqueDays = [...new Set(shifts.map(s => getShiftKey(s)))];
 
-    // Estructura Avanzada (Múltiples turnos por día: Mañana / Tarde)
     if (hasMultipleShiftsPerDay) {
         const timeSlots = [...new Set(shifts.map(s => `${formatTime(s.start_time)} - ${formatTime(s.end_time)}`))];
 
@@ -63,8 +62,8 @@ export default function ShiftTable({
                     <tbody>
                         {locations.map(location => (
                             <tr key={location.id}>
-                                <td className="text-start">
-                                    <div className="d-flex justify-content-between align-items-center px-2">
+                                <td className="text-start td-location-name">
+                                    <div className="d-flex justify-content-between align-items-center px-2 ">
                                         <span>{location.name}</span>
                                         <button 
                                             type="button" 
@@ -100,7 +99,6 @@ export default function ShiftTable({
                                                         className="form-check-input" 
                                                         style={{ transform: 'scale(1.3)', cursor: 'pointer' }}
                                                         checked={isChecked}
-                                                        // Enviamos también el slot (horario) para que la lógica superior sepa qué reemplazar si ya hay otro sitio marcado a esa misma hora
                                                         onChange={() => onCheckboxChange(dayKey, shift.id, { start, end })}
                                                     />
                                                 </div>
@@ -116,7 +114,6 @@ export default function ShiftTable({
         );
     }
 
-    // Estructura Estándar
     return (
         <div className="table-responsive">
             <table className="table table-custom text-center align-middle">

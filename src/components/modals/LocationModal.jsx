@@ -16,8 +16,7 @@ export default function LocationModal({ location, onClose }) {
                                 <img 
                                     src={location.img_path} 
                                     alt={location.name} 
-                                    className="img-fluid rounded border shadow-sm" 
-                                    style={{ maxHeight: '200px', width: '100%', objectFit: 'cover' }}
+                                    className="img-fluid rounded border shadow-sm"
                                 />
                             </div>
                             <div className="col-md-6">
@@ -26,7 +25,7 @@ export default function LocationModal({ location, onClose }) {
                         </div>
                     </div>
                     <div className="modal-footer border-0 pt-0">
-                        <button type="button" className="btn btn-secondary btn-sm" onClick={onClose}>
+                        <button type="button" className="btn-gray py-2 rounded-3" onClick={onClose}>
                             Cerrar
                         </button>
                     </div>
