@@ -78,8 +78,24 @@ export default function ProjectScheduleModal({ show, onClose, projectId, project
     const handleDownloadJpg = async () => {
         if (!scheduleRef.current) return null;
         setDownloading(true);
+
+        const element = scheduleRef.current;
+        
+        // Truco: Guardamos los estilos originales para forzar el ancho total durante la captura
+        const originalWidth = element.style.width;
+        const originalMaxWidth = element.style.maxWidth;
+
         try {
-            const canvas = await html2canvas(scheduleRef.current, { scale: 2, useCORS: true });
+            // Forzamos un ancho de escritorio fijo temporalmente para que la tabla no se comprima ni recorte
+            element.style.width = '1000px';
+            element.style.maxWidth = 'none';
+
+            const canvas = await html2canvas(element, { 
+                scale: 2, 
+                useCORS: true,
+                windowWidth: 1200 // Simula una ventana de escritorio para evitar recortes responsivos
+            });
+
             const image = canvas.toDataURL('image/jpeg', 0.9);
             const link = document.createElement('a');
             link.href = image;
@@ -90,31 +106,10 @@ export default function ProjectScheduleModal({ show, onClose, projectId, project
             console.error("Error al generar la imagen:", error);
             return null;
         } finally {
+            // Restauramos los estilos originales del contenedor inmediatamente después
+            element.style.width = originalWidth;
+            element.style.maxWidth = originalMaxWidth;
             setDownloading(false);
-        }
-    };
-
-    const handleShareWhatsapp = async () => {
-        try {
-            const node = document.getElementById(`cuadrante-${id}`);
-            const blob = await htmlToImage.toBlob(node);
-            const file = new File([blob], `cuadrante-${slug}.jpg`, { type: 'image/jpeg' });
-
-            const shareData = {
-                title: `Cuadrante: ${projectTitle}`,
-                text: `¡Hola! Aquí tienes el cuadrante de *${projectTitle}*. ¡Échale un vistazo!`,
-                files: [file]
-            };
-
-            if (navigator.canShare && navigator.canShare(shareData)) {
-                await navigator.share(shareData);
-            } else {
-                await handleDownloadJpg();
-                const text = encodeURIComponent(`¡Hola! Aquí tienes el cuadrante de *${projectTitle}*. \n\n(Te acabo de descargar la imagen en tu dispositivo).`);
-                window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
-            }
-        } catch (error) {
-            console.error("Error al compartir:", error);
         }
     };
 
@@ -132,30 +127,33 @@ export default function ProjectScheduleModal({ show, onClose, projectId, project
                         </div>
 
                         <div className="modal-body p-4 bg-light">
-                            <div ref={scheduleRef} className="bg-white p-4 rounded-3 shadow-sm">
-                                <div className="text-center mb-3">
-                                    <h4 className="fw-bold text-danger">{projectTitle}</h4>
-                                    <p className="text-muted small mb-0">Cuadrante de turnos {getCurrentWeekRange(project, shifts)}</p>
-                                </div>
+                            {/* Contenedor con scroll horizontal para móviles */}
+                            <div className="table-responsive">
+                                <div ref={scheduleRef} className="bg-white p-4 rounded-3 shadow-sm" style={{ minWidth: '750px' }}>
+                                    <div className="text-center mb-3">
+                                        <h4 className="fw-bold text-danger">{projectTitle}</h4>
+                                        <p className="text-muted small mb-0">Cuadrante de turnos {getCurrentWeekRange(project, shifts)}</p>
+                                    </div>
 
-                                {loading ? (
-                                    <div className="text-center py-5">
-                                        <div className="spinner-border text-danger" role="status">
-                                            <span className="visually-hidden">Cargando...</span>
+                                    {loading ? (
+                                        <div className="text-center py-5">
+                                            <div className="spinner-border text-danger" role="status">
+                                                <span className="visually-hidden">Cargando...</span>
+                                            </div>
+                                            <p className="text-muted mt-2 small">Cargando turnos y ubicaciones...</p>
                                         </div>
-                                        <p className="text-muted mt-2 small">Cargando turnos y ubicaciones...</p>
-                                    </div>
-                                ) : error ? (
-                                    <div className="alert alert-danger text-center my-3" role="alert">
-                                        {error}
-                                    </div>
-                                ) : (
-                                    <RegisteredScheduleTable 
-                                        locations={locations}
-                                        shifts={shifts}
-                                        onViewLocation={(loc) => setActiveLocation(loc)}
-                                    />
-                                )}
+                                    ) : error ? (
+                                        <div className="alert alert-danger text-center my-3" role="alert">
+                                            {error}
+                                        </div>
+                                    ) : (
+                                        <RegisteredScheduleTable 
+                                            locations={locations}
+                                            shifts={shifts}
+                                            onViewLocation={(loc) => setActiveLocation(loc)}
+                                        />
+                                    )}
+                                </div>
                             </div>
                         </div>
 
@@ -165,15 +163,6 @@ export default function ProjectScheduleModal({ show, onClose, projectId, project
                             </button>
 
                             <div className="d-flex gap-2">
-                                <button 
-                                    type="button" 
-                                    className="btn btn-success text-white fw-semibold px-3" 
-                                    onClick={handleShareWhatsapp}
-                                    disabled={loading}
-                                >
-                                    <i className="bi bi-whatsapp me-1"></i> Compartir
-                                </button>
-
                                 <button 
                                     type="button" 
                                     className="btn-accent p-2 rounded-3 text-decoration-none border-0" 
