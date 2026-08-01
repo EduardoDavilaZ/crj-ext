@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Help from './pages/Help';
-import ScrollToTop from './ScrollToTop';
+import ScrollToTop from './components/ScrollToTop';
 
 // --- Infancia Hospitalizada ---
 import InfanciaInfo from './features/projects/infancia-hospitalizada/InfoPage';
@@ -32,7 +32,7 @@ export default function App() {
     <Router>
       <Routes>
         <ScrollToTop />
-        
+
         <Route path="/" element={<Home />} />
         <Route path="/ayuda" element={<Help />} />
         
