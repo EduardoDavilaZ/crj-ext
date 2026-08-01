@@ -30,9 +30,8 @@ import EsieForm from './features/projects/esie/Form';
 export default function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
-        <ScrollToTop />
-
         <Route path="/" element={<Home />} />
         <Route path="/ayuda" element={<Help />} />
         
