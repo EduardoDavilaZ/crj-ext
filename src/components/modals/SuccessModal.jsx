@@ -26,7 +26,13 @@ export default function SuccessModal({ show, onClose }) {
         if (show) {
             const randomObj = successMessages[Math.floor(Math.random() * successMessages.length)];
             setCurrentMessage(randomObj);
-            triggerConfetti();
+            
+            // Un pequeño retraso para asegurar que el DOM del modal ya se ha pintado en móviles antes de lanzar las partículas
+            const timer = setTimeout(() => {
+                triggerConfetti();
+            }, 50);
+
+            return () => clearTimeout(timer);
         }
     }, [show]);
 
@@ -36,24 +42,45 @@ export default function SuccessModal({ show, onClose }) {
         <div 
             className="modal show d-block" 
             tabIndex="-1" 
-            style={{ backgroundColor: 'rgba(30, 36, 48, 0.5)', backdropFilter: 'blur(4px)', cursor: 'pointer' }}
+            style={{ 
+                backgroundColor: 'rgba(30, 36, 48, 0.6)', 
+                backdropFilter: 'blur(4px)', 
+                cursor: 'pointer',
+                zIndex: 1050 
+            }}
             onClick={onClose}
         >
-            <div id="tsparticles-confetti" style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 1055 }}></div>
-
             <div className="modal-dialog modal-dialog-centered" onClick={(e) => e.stopPropagation()}>
-                <div className="modal-content border-0 shadow-lg text-center p-4" style={{ borderRadius: 'var(--radius)', backgroundColor: 'var(--card)', zIndex: 1056 }}>
-                    
-                    <div className="my-3">
+                <div 
+                    className="modal-content border-0 shadow-lg text-center p-4 position-relative overflow-hidden" 
+                    style={{ 
+                        borderRadius: 'var(--radius)', 
+                        backgroundColor: 'var(--card)', 
+                        zIndex: 1052 
+                    }}
+                >
+                    {/* Contenedor de partículas integrado dentro de la tarjeta para móviles */}
+                    <div 
+                        id="tsparticles-confetti" 
+                        style={{ 
+                            position: 'absolute', 
+                            inset: 0, 
+                            pointerEvents: 'none', 
+                            zIndex: 1 
+                        }}
+                    ></div>
+
+                    {/* Contenido de la alerta con zIndex superior para que esté por encima del confeti */}
+                    <div className="my-3 position-relative" style={{ zIndex: 2 }}>
                         <div className="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style={{ width: '70px', height: '70px', backgroundColor: '#6cb9b620', color: 'var(--c-primary)' }}>
                             <i className="bi bi-heart-fill fs-2"></i>
                         </div>
                         
-                        <h3 className="fw-bold my-2 h2">
+                        <h3 className="fw-bold my-2 h2" style={{ color: 'var(--c-deep)' }}>
                             {currentMessage.title}
                         </h3>
 
-                        <p className="subtitle px-2 my-4">
+                        <p className="subtitle px-2 my-4" style={{ color: 'var(--muted)' }}>
                             {currentMessage.text}
                         </p>
                     </div>
