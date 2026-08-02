@@ -16,3 +16,96 @@
     font-size: 14px;
     letter-spacing: 0.5px;
 }
+
+.navLink{
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+    font-weight:600;
+    color:#333;
+    transition:.2s;
+}
+
+.active{
+    color: var(--c-accent) !important;
+    font-weight:700;
+}
+
+.active::after{
+    width:100%;
+}
+
+.navLink::after{
+    content:"";
+    display:block;
+    position:absolute;
+    bottom:-4px;
+    left:0;
+    width:0;
+    height:2px;
+    background:#e30613;
+    transition:.25s;
+}
+
+.navLink{
+    position:relative;
+}
+@media (max-width: 991.98px) {
+
+    .containerMobile{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .container {
+        justify-content: center !important;
+    }
+
+    .navContainer{
+        justify-content: center !important;
+    }
+
+    .navbar-toggler{
+        display:block;
+        margin:.75rem auto 1rem;
+    }
+
+    .brand{
+        width:100%;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        gap:.75rem;
+        margin-bottom:.75rem;
+    }
+
+    .brandText{
+        text-align:center;
+        padding:0 !important;
+    }
+
+    .navbar-toggler{
+        margin-bottom:1rem;
+    }
+
+    .mobileNav{
+        width:100%;
+    }
+
+    .mobileNav .nav-item{
+        width:100%;
+    }
+
+    .navLink{
+        width:100%;
+        justify-content:center;
+        padding:1rem;
+        border-top:1px solid #eee;
+    }
+
+    .navLink::after{
+        display:none;
+    }
+
+}

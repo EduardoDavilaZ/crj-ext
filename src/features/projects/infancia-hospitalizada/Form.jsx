@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import MainLayout from '../../../layouts/MainLayout';
 import LocationModal from '../../../components/modals/LocationModal';
@@ -5,6 +6,7 @@ import ProjectShiftSection from '../../../components/forms/ProjectShiftSection';
 import { useProjectForm } from '../../../hooks/useProjectForm';
 import { getCurrentWeekRange } from '../../../utils/dateUtils';
 import SuccessModal from '../../../components/modals/SuccessModal';
+import { validateName, validateSelections } from '../../../utils/validators';
 
 export default function Form() {
     const { slug } = useParams();
@@ -21,8 +23,30 @@ export default function Form() {
         showSuccessModal,   
         setShowSuccessModal,
         handleCheckboxChange,
-        handleSubmit
+        handleSubmit: submitFormAction
     } = useProjectForm(slug || "infancia-hospitalizada", "Infancia Hospitalizada");
+
+    const [errors, setErrors] = useState({});
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const nameError = validateName(name);
+        const selectionError = validateSelections(selectedSelections);
+
+        const newErrors = {
+            name: nameError,
+            shifts: selectionError
+        };
+
+        setErrors(newErrors);
+
+        if (nameError || selectionError) {
+            return;
+        }
+
+        submitFormAction(e);
+    };
 
     return (
         <MainLayout>
@@ -36,17 +60,20 @@ export default function Form() {
                     <span className='kudos d-block my-2 datetime'>Horario: 18:00 - 20:00</span>
                 </div>
                 
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} noValidate>
                     <div className="my-2">
                         <label htmlFor="name" className='form-label fw-bold my-2'>Nombre y apellido</label>
                         <input 
                             type="text" 
-                            className='form-control' 
+                            className={`form-control ${errors.name ? 'is-invalid' : ''}`} 
                             id="name" 
                             value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            required 
+                            onChange={(e) => {
+                                setName(e.target.value);
+                                if (errors.name) setErrors({ ...errors, name: '' });
+                            }} 
                         />
+                        {errors.name && <div className="error mt-1">{errors.name}</div>}
                     </div>
 
                     <ProjectShiftSection 
@@ -54,12 +81,16 @@ export default function Form() {
                         shifts={shifts}
                         locations={locations}
                         selectedSelections={selectedSelections}
-                        handleCheckboxChange={handleCheckboxChange}
+                        handleCheckboxChange={(dayKey, shiftId, slot) => {
+                            handleCheckboxChange(dayKey, shiftId, slot);
+                            if (errors.shifts) setErrors({ ...errors, shifts: '' });
+                        }}
                         setActiveLocation={setActiveLocation}
                         extraContent={
                             <>
                                 <label className='form-label fw-bold d-block mb-2'>Selecciona tus turnos por centro y día:</label>
                                 <span className='kudos d-block datetime my-2'>{getCurrentWeekRange()}</span>
+                                {errors.shifts && <div className="error mt-1">{errors.shifts}</div>}
                             </>
                         }
                     />
