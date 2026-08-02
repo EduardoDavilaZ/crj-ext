@@ -15,7 +15,7 @@ const successMessages = [
     { title: "¡Inscrito con éxito!", text: "Prepárate para vivir una experiencia inolvidable. ¡Gracias!" },
     { title: "¡Ya estás con nosotros!", text: "Gracias por tu valentía y tus ganas de transformar la realidad." },
     { title: "¡Completado con éxito!", text: "Gracias por regalar tu tiempo y tu talento a quienes más lo necesitan." },
-    { title: "¡Inscripción registrada!", text: "Gracias por ser el latido de este proyecto. ¡Bienvenido!" },
+    { title: "¡Inscripción registrada!", text: "Gracias por ser el latido de este proyecto. ¡Bienvenid@!" },
     { title: "¡Todo listo!", text: "No hay palabras para agradecer tus ganas de aportar y construir comunidad." }
 ];
 

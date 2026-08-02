@@ -39,7 +39,7 @@ export default function InfoPage() {
                     <div className='info-card row'>
                         <h4>Fechas Clave</h4>
                         <p>
-                            El corazón de esta campaña late fuerte desde el mes de diciembre hasta la mágica jornada del Día de Reyes. ¡Estate atento a los plazos!
+                            El corazón de esta campaña late fuerte desde el mes de diciembre hasta la mágica jornada del Día de Reyes. ¡Mantente atento a los plazos!
                         </p>
                         <i className="bi bi-calendar-event"></i>
                     </div>

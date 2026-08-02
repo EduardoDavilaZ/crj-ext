@@ -11,7 +11,7 @@ export default function Hero() {
                     <span className={`${styles.heroTitleAccent}`}>Si formas parte, toma parte</span>
                 </h1>
                 <p className={`mb-4 ${styles.heroDescription}`}>
-                    Súmate al voluntariado que mueve Badajoz. Comparte tu energía, participa en proyectos reales y haz que las cosas pasen en tu ciudad.
+                    Súmate al voluntariado que mueve <span className='c-sage fw-semibold'>Badajoz</span>. Comparte tu energía, participa en proyectos reales y haz que las cosas pasen en tu ciudad.
                 </p>
 
                 <div className="d-flex flex-wrap justify-content-center gap-3">

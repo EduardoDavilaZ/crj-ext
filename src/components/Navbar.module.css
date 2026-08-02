@@ -29,6 +29,7 @@
 .active{
     color: var(--c-accent) !important;
     font-weight:700;
+    border-bottom: 2px solid var(--c-accent);
 }
 
 .active::after{
