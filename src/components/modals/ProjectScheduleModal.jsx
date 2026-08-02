@@ -158,18 +158,18 @@ export default function ProjectScheduleModal({ show, onClose, projectId, project
                         </div>
 
                         <div className="modal-footer bg-white rounded-bottom-4 justify-content-between">
-                            <button type="button" className="btn-gray py-2 rounded-3" onClick={onClose}>
-                                Cerrar
+                            <button type="button" className="btn-gray px-4 py-2 rounded-3" onClick={onClose}>
+                                <i class="bi bi-x-circle"></i> Cerrar
                             </button>
 
                             <div className="d-flex gap-2">
                                 <button 
                                     type="button" 
-                                    className="btn-accent p-2 rounded-3 text-decoration-none border-0" 
+                                    className="btn-accent px-4 py-2 rounded-3 text-decoration-none border-0" 
                                     onClick={handleDownloadJpg}
                                     disabled={downloading || loading}
                                 >
-                                    <i className="bi bi-download me-1"></i> {downloading ? 'Generando...' : 'Descargar JPG'}
+                                    <i className="bi bi-download me-1"></i> {downloading ? 'Generando...' : 'Descargar'}
                                 </button>
                             </div>
                         </div>

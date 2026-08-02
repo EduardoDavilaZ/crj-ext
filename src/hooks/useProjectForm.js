@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { projectService } from '../services/projectService';
 import { getExactDateForDay } from '../utils/dateUtils';
 import swal from 'sweetalert';
+import SuccessModal from '../components/modals/SuccessModal';
 
 export function useProjectForm(defaultSlug, defaultTitle) {
     const [name, setName] = useState('');
@@ -12,6 +13,7 @@ export function useProjectForm(defaultSlug, defaultTitle) {
     const [locations, setLocations] = useState([]);
     const [shifts, setShifts] = useState([]);
     const [loading, setLoading] = useState(true); // <--- NUEVO ESTADO DE CARGA
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
 
     useEffect(() => {
         const fetchProjectData = async () => {
@@ -79,7 +81,7 @@ export function useProjectForm(defaultSlug, defaultTitle) {
 
         try {
             await projectService.registerShift(finalData);
-            swal("¡Éxito!", "¡Inscripción registrada con éxito!", "success");
+            setShowSuccessModal(true);
             setName('');
             setSelectedSelections({});
         } catch (error) {
@@ -98,6 +100,8 @@ export function useProjectForm(defaultSlug, defaultTitle) {
         locations,
         shifts,
         loading, // <--- EXPORTAMOS EL LOADING AQUÍ
+        showSuccessModal,      // <--- AÑADE ESTO
+        setShowSuccessModal,   // <--- AÑADE ESTO
         handleCheckboxChange,
         handleSubmit
     };

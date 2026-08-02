@@ -4,6 +4,7 @@ import LocationModal from '../../../components/modals/LocationModal';
 import ProjectShiftSection from '../../../components/forms/ProjectShiftSection';
 import { useProjectForm } from '../../../hooks/useProjectForm';
 import { getCurrentWeekRange } from '../../../utils/dateUtils';
+import SuccessModal from '../../../components/modals/SuccessModal';
 
 export default function Form() {
     const { slug } = useParams();
@@ -17,6 +18,8 @@ export default function Form() {
         locations,
         shifts,
         loading,
+        showSuccessModal,   
+        setShowSuccessModal,
         handleCheckboxChange,
         handleSubmit
     } = useProjectForm(slug || "infancia-hospitalizada", "Infancia Hospitalizada");
@@ -67,6 +70,11 @@ export default function Form() {
                         </button>
                     </div>
                 </form>
+
+                <SuccessModal 
+                    show={showSuccessModal} 
+                    onClose={() => setShowSuccessModal(false)} 
+                />
             </div>
 
             <LocationModal location={activeLocation} onClose={() => setActiveLocation(null)} />
