@@ -116,6 +116,18 @@ button {
     line-height: 1.4;
 }
 
+.c-primary {
+    color: var(--c-primary);
+}
+
+.c-deep {
+    color: var(--c-deep);
+}
+
+.c-accent {
+    color: var(--c-accent);
+}
+
 .loader {
     margin: 2rem 0rem;
     img {
