@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { feedbackService } from '../../services/feedbackService';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 
 export default function FeedbackModal({ show, onClose }) {
     const [digits, setDigits] = useState(['', '', '', '']);
@@ -52,7 +52,14 @@ export default function FeedbackModal({ show, onClose }) {
     const handleConsult = async () => {
         const fullCode = digits.join('');
         if (fullCode.length < 4) {
-            swal("Atención", "Por favor, introduce los 4 dígitos completos del código.", "warning");
+            Swal.fire({
+                title: "Atención",
+                text: "Por favor, introduce los 4 dígitos completos del código.",
+                icon: "warning",
+                showConfirmButton: false,
+                timer: 4000,
+                allowOutsideClick: true
+            });
             return;
         }
 
@@ -61,7 +68,14 @@ export default function FeedbackModal({ show, onClose }) {
             const data = await feedbackService.getFeedbackByCode(fullCode);
             setFeedbackData(data); // Contiene name, comment y response
         } catch (error) {
-            swal("No encontrado", "No existe ningún comentario asociado a este código.", "error");
+            Swal.fire({
+                title: "No encontrado",
+                text: "No existe ningún comentario asociado a este código.",
+                icon: "error",
+                showConfirmButton: false,
+                timer: 4000,
+                allowOutsideClick: true
+            });
         } finally {
             setLoading(false);
         }

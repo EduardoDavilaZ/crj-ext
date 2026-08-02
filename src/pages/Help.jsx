@@ -2,7 +2,7 @@ import MainLayout from '../layouts/MainLayout';
 import { useState } from 'react';
 import { feedbackService } from '../services/feedbackService';
 import FeedbackModal from '../components/modals/FeedbackModal';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 
 export default function Help() {
     const [name, setName] = useState('');
@@ -13,7 +13,14 @@ export default function Help() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!comment.trim()) {
-            swal("Atención", "El comentario no puede estar vacío.", "warning");
+            Swal.fire({
+                title: "Atención",
+                text: "El comentario no puede estar vacío.",
+                icon: "warning",
+                showConfirmButton: false,
+                timer: 4000,
+                allowOutsideClick: true
+            });
             return;
         }
 
@@ -26,17 +33,26 @@ export default function Help() {
 
             const code = response.code || response.data?.code;
 
-            swal({
+            Swal.fire({
                 title: "¡Enviado con éxito!",
                 text: `Tu código único de 4 dígitos es: [ ${code} ]. Guárdalo para ver la respuesta.`,
                 icon: "success",
-                button: "Entendido",
+                showConfirmButton: false,
+                timer: 4000,
+                allowOutsideClick: true
             });
 
             setName('');
             setComment('');
         } catch (error) {
-            swal("Error", "No se pudo enviar el comentario. Inténtalo de nuevo.", "error");
+            Swal.fire({
+                title: "Error",
+                text: "No se pudo enviar el comentario. Inténtalo de nuevo.",
+                icon: "error",
+                showConfirmButton: false,
+                timer: 4000,
+                allowOutsideClick: true
+            });
         } finally {
             setLoading(false);
         }
