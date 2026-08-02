@@ -1,0 +1,23 @@
+{
+    "name": "CRJ Badajoz | Cruz Roja Juventud",
+    "short_name": "CRJ Badajoz",
+    "description": "Plataforma oficial de gestión de proyectos, actividades y voluntariado de Cruz Roja Juventud en Badajoz.",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "background_color": "#f7fafb",
+    "theme_color": "#f6333f",
+    "icons": [
+        {
+        "src": "/apple-touch-icon.png",
+        "sizes": "180x180",
+        "type": "image/png",
+        "purpose": "any maskable"
+        },
+        {
+        "src": "/og-image.png",
+        "sizes": "1200x630",
+        "type": "image/png"
+        }
+    ]
+}

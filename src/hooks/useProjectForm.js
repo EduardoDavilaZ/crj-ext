@@ -12,12 +12,12 @@ export function useProjectForm(defaultSlug, defaultTitle) {
     const [activeLocation, setActiveLocation] = useState(null);
     const [locations, setLocations] = useState([]);
     const [shifts, setShifts] = useState([]);
-    const [loading, setLoading] = useState(true); // <--- NUEVO ESTADO DE CARGA
+    const [loading, setLoading] = useState(true);
     const [showSuccessModal, setShowSuccessModal] = useState(false);
 
     useEffect(() => {
         const fetchProjectData = async () => {
-            setLoading(true); // Empieza a cargar
+            setLoading(true);
             try {
                 const projects = await projectService.getProjects();
                 const currentProject = projects.find(p => p.slug === defaultSlug || (p.id && p.id.toString() === defaultSlug));
@@ -34,9 +34,15 @@ export function useProjectForm(defaultSlug, defaultTitle) {
                 }
             } catch (error) {
                 console.error("Error al cargar los datos de la API:", error);
-                swal("Error", "No se pudieron cargar los centros y turnos.", "error");
+                swal({
+                    title: "¡Madre mía!",
+                    text: "No se pudieron cargar los centros y turnos.",
+                    icon: "error",
+                    button: false,
+                    timer: 4000
+                });
             } finally {
-                setLoading(false); // Termina de cargar (tanto si va bien como si falla)
+                setLoading(false);
             }
         };
 
@@ -85,8 +91,13 @@ export function useProjectForm(defaultSlug, defaultTitle) {
             setName('');
             setSelectedSelections({});
         } catch (error) {
-            console.error("Error al registrar en la BD:", error);
-            swal("Oops...", "Hubo un error al registrar la inscripción.", "error");
+            swal({
+                title: "¡Madre mía!",
+                text: "Hubo un error al registrar la inscripción.",
+                icon: "error",
+                button: false,
+                timer: 4000
+            });
         }
     };
 
@@ -99,9 +110,9 @@ export function useProjectForm(defaultSlug, defaultTitle) {
         setActiveLocation,
         locations,
         shifts,
-        loading, // <--- EXPORTAMOS EL LOADING AQUÍ
-        showSuccessModal,      // <--- AÑADE ESTO
-        setShowSuccessModal,   // <--- AÑADE ESTO
+        loading,
+        showSuccessModal,
+        setShowSuccessModal,
         handleCheckboxChange,
         handleSubmit
     };
