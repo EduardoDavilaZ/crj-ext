@@ -38,7 +38,7 @@ export function useProjectForm(defaultSlug, defaultTitle) {
                     title: "¡Madre mía!",
                     text: "No se pudieron cargar los centros y turnos.",
                     icon: "error",
-                    button: false,
+                    showConfirmButton: false,
                     timer: 4000
                 });
             } finally {
@@ -95,7 +95,7 @@ export function useProjectForm(defaultSlug, defaultTitle) {
                 title: "¡Madre mía!",
                 text: "Hubo un error al registrar la inscripción.",
                 icon: "error",
-                button: false,
+                showConfirmButton: false,
                 timer: 4000
             });
         }
