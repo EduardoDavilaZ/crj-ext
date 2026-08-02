@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { projectService } from '../services/projectService';
 import { getExactDateForDay } from '../utils/dateUtils';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import SuccessModal from '../components/modals/SuccessModal';
 
 export function useProjectForm(defaultSlug, defaultTitle) {
@@ -30,15 +30,23 @@ export function useProjectForm(defaultSlug, defaultTitle) {
                     const allShifts = locationsData.flatMap(loc => loc.shifts || []);
                     setShifts(allShifts);
                 } else {
-                    swal("Atención", "No se encontró el proyecto especificado.", "warning");
+                    Swal.fire({
+                        title: "Atención",
+                        text: "No se encontró el proyecto especificado.",
+                        icon: "warning",
+                        showConfirmButton: false,
+                        allowOutsideClick: true,
+                        timer: 4000
+                    });
                 }
             } catch (error) {
                 console.error("Error al cargar los datos de la API:", error);
-                swal({
+                Swal.fire({
                     title: "¡Madre mía!",
                     text: "No se pudieron cargar los centros y turnos.",
                     icon: "error",
                     showConfirmButton: false,
+                    allowOutsideClick: true,
                     timer: 4000
                 });
             } finally {
@@ -91,11 +99,12 @@ export function useProjectForm(defaultSlug, defaultTitle) {
             setName('');
             setSelectedSelections({});
         } catch (error) {
-            swal({
+            Swal.fire({
                 title: "¡Madre mía!",
                 text: "Hubo un error al registrar la inscripción.",
                 icon: "error",
                 showConfirmButton: false,
+                allowOutsideClick: true,
                 timer: 4000
             });
         }
