@@ -429,3 +429,9 @@ section {
         background-color: #6e988713;
     }
 }
+
+.error {
+    color: var(--c-rose);
+    font-size: .85rem;
+    font-weight: 700;
+}
