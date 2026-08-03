@@ -5,6 +5,7 @@ import LocationModal from '../../../components/modals/LocationModal';
 import ProjectShiftSection from '../../../components/forms/ProjectShiftSection';
 import { useProjectForm } from '../../../hooks/useProjectForm';
 import { getCurrentWeekRange } from '../../../utils/dateUtils';
+import SuccessModal from '../../../components/modals/SuccessModal';
 import { validateName, validateSelections } from '../../../utils/validators';
 
 export default function Form() {
@@ -20,6 +21,9 @@ export default function Form() {
         locations,
         shifts,
         loading,
+        isSubmitting,
+        showSuccessModal,   
+        setShowSuccessModal,
         handleCheckboxChange,
         handleSubmit: submitFormAction
     } = useProjectForm(slug || "espacios-educativos", "Espacios Educativos Saludables");
@@ -123,11 +127,16 @@ export default function Form() {
                         </div>
 
                         <div className="text-end">
-                            <button type="submit" className="btn btn-accent px-4 mb-4 fw-semibold">
+                            <button type="submit" className="btn btn-accent px-4 mb-4 fw-semibold" disabled={isSubmitting}>
                                 Completar Inscripción
                             </button>
                         </div>
                     </form>
+
+                    <SuccessModal 
+                        show={showSuccessModal} 
+                        onClose={() => setShowSuccessModal(false)} 
+                    />
                 </div>
             </div>
 
