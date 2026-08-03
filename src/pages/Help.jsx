@@ -2,6 +2,7 @@ import MainLayout from '../layouts/MainLayout';
 import { useState } from 'react';
 import { feedbackService } from '../services/feedbackService';
 import FeedbackModal from '../components/modals/FeedbackModal';
+import AnonymousSuccessModal from '../components/modals/AnonymousSuccessModal';
 import Swal from 'sweetalert2';
 
 export default function Help() {
@@ -9,6 +10,9 @@ export default function Help() {
     const [comment, setComment] = useState('');
     const [loading, setLoading] = useState(false);
     const [showModal, setShowModal] = useState(false);
+
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
+    const [createdCode, setCreatedCode] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -33,14 +37,8 @@ export default function Help() {
 
             const code = response.code || response.data?.code;
 
-            Swal.fire({
-                title: "¡Enviado con éxito!",
-                text: `Tu código único de 4 dígitos es: [ ${code} ]. Guárdalo para ver la respuesta.`,
-                icon: "success",
-                showConfirmButton: false,
-                timer: 4000,
-                allowOutsideClick: true
-            });
+            setCreatedCode(code);
+            setShowSuccessModal(true);
 
             setName('');
             setComment('');
@@ -191,6 +189,12 @@ export default function Help() {
             </div>
 
             <FeedbackModal show={showModal} onClose={() => setShowModal(false)} />
+            
+            <AnonymousSuccessModal 
+                show={showSuccessModal} 
+                onClose={() => setShowSuccessModal(false)} 
+                feedbackCode={createdCode} 
+            />
         </MainLayout>
     );
 }
