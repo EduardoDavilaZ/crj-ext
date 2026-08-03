@@ -14,6 +14,7 @@ export function useProjectForm(defaultSlug, defaultTitle) {
     const [shifts, setShifts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showSuccessModal, setShowSuccessModal] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     useEffect(() => {
         const fetchProjectData = async () => {
@@ -77,6 +78,7 @@ export function useProjectForm(defaultSlug, defaultTitle) {
 
     const handleSubmit = async (e, customPayloadConfig = {}) => {
         e.preventDefault();
+        setIsSubmitting(true);
         
         const shiftsPayload = Object.values(selectedSelections).map((shiftId) => {
             const shiftObj = shifts.find(s => s.id === shiftId);
@@ -107,6 +109,8 @@ export function useProjectForm(defaultSlug, defaultTitle) {
                 allowOutsideClick: true,
                 timer: 4000
             });
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -120,6 +124,7 @@ export function useProjectForm(defaultSlug, defaultTitle) {
         locations,
         shifts,
         loading,
+        isSubmitting,
         showSuccessModal,
         setShowSuccessModal,
         handleCheckboxChange,

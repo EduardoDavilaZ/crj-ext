@@ -20,6 +20,7 @@ export default function Form() {
         locations,
         shifts,
         loading,
+        isSubmitting,
         showSuccessModal,   
         setShowSuccessModal,
         handleCheckboxChange,
