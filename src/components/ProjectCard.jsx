@@ -1,10 +1,26 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import ProjectScheduleModal from './modals/ProjectScheduleModal';
 import styles from './ProjectCard.module.css';
 
 export default function ProjectCard({ id, title, description, slug, link, formLink, shifts = [], isActive = true }) {
+    const [searchParams, setSearchParams] = useSearchParams();
     const [showModal, setShowModal] = useState(false);
+
+    useEffect(() => {
+        const cuadranteParam = searchParams.get('cuadrante');
+        if (cuadranteParam === String(id) && isActive) {
+            setShowModal(true);
+        }
+    }, [searchParams, id, isActive]);
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+        if (searchParams.get('cuadrante') === String(id)) {
+            searchParams.delete('cuadrante');
+            setSearchParams(searchParams);
+        }
+    };
 
     const iconSrc = new URL(`../assets/img/projects/${slug}/icon.png`, import.meta.url).href;
     const bannerBg = `url(${new URL(`../assets/img/projects/${slug}/banner.webp`, import.meta.url).href})`;
@@ -68,7 +84,7 @@ export default function ProjectCard({ id, title, description, slug, link, formLi
 
             <ProjectScheduleModal 
                 show={showModal}
-                onClose={() => setShowModal(false)}
+                onClose={handleCloseModal}
                 projectId={id}
                 projectTitle={title}
             />
