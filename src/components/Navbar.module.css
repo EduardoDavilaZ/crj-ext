@@ -1,15 +1,20 @@
-.navbarSticky {
-    z-index: 1000;
+.navbarMain {
+    z-index: 1050;
 }
 
 .logoImg {
-    max-width: 200px;
-    height: auto;
+    width: 180px !important;
+    max-width: 180px !important;
+    height: auto !important;
+    object-fit: contain;
 }
 
-.emoji {
-    width: 20px;
-    margin: 4px 4px 8px 4px;
+.emojiImg {
+    width: 20px !important;
+    height: 20px !important;
+    margin: 0 3px !important;
+    object-fit: contain;
+    display: inline-block;
 }
 
 .brandText {
@@ -17,96 +22,159 @@
     letter-spacing: 0.5px;
 }
 
-.navLink{
-    display:flex;
-    align-items:center;
-    gap:.5rem;
-    font-weight:600;
-    color:#333;
-    transition:.2s;
+.navLink {
+    transition: 0.2s;
+    position: relative;
+    padding: 0.5rem 0;
 }
 
-.active{
-    color: var(--c-accent) !important;
-    font-weight:700;
-    border-bottom: 2px solid var(--c-accent);
+.navLink::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #e30613;
+    transition: 0.3s ease;
 }
 
-.active::after{
-    width:100%;
+.active {
+    color: #e30613 !important;
 }
 
-.navLink::after{
-    content:"";
-    display:block;
-    position:absolute;
-    bottom:-4px;
-    left:0;
-    width:0;
-    height:2px;
-    background:#e30613;
-    transition:.25s;
+.active::after {
+    width: 100%;
 }
 
-.navLink{
-    position:relative;
+/* =========================================
+   BOTÓN HAMBURGUESA (EN NAVBAR)
+========================================= */
+.hamburgerBtn {
+    width: 30px;
+    height: 22px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
 }
+
+.bar {
+    width: 100%;
+    height: 3px;
+    background-color: #333;
+    border-radius: 2px;
+}
+
+/* =========================================
+   BOTÓN X DE CIERRE (DENTRO DEL DRAWER)
+========================================= */
+.closeXBtn {
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1080;
+}
+
+.xBar1, .xBar2 {
+    position: absolute;
+    width: 22px;
+    height: 3px;
+    background-color: #333;
+    border-radius: 2px;
+}
+
+.xBar1 {
+    transform: rotate(45deg);
+}
+
+.xBar2 {
+    transform: rotate(-45deg);
+}
+
+/* Backdrop oscuro */
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1060;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease;
+}
+
+.showBackdrop {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Drawer lateral de derecha a izquierda */
+.drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: #fff;
+    z-index: 1070;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+    transition: right 0.35s ease-in-out;
+}
+
+.showDrawer {
+    right: 0;
+}
+
+.drawerHeader {
+    min-height: 110px;
+}
+
+.drawerLogo {
+    max-width: 140px;
+    height: auto;
+}
+
+.drawerBrandSub {
+    font-size: 9px;
+    letter-spacing: 0.5px;
+}
+
+.drawerActive {
+    background-color: #fff5f5;
+    color: #e30613 !important;
+    border-right: 4px solid #e30613;
+}
+
 @media (max-width: 991.98px) {
-
-    .containerMobile{
-        display:flex;
-        flex-direction:column;
-        align-items:center;
+    .brandMain {
+        margin-right: auto !important;
+        align-items: center !important;
+        text-align: center;
+        max-width: calc(100% - 40px);
     }
 
-    .container {
-        justify-content: center !important;
+    .logoImg {
+        width: 105px !important;
+        max-width: 105px !important;
     }
 
-    .navContainer{
-        justify-content: center !important;
+    .brandText {
+        font-size: 10.5px;
     }
-
-    .navbar-toggler{
-        display:block;
-        margin:.75rem auto 1rem;
-    }
-
-    .brand{
-        width:100%;
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        gap:.75rem;
-        margin-bottom:.75rem;
-    }
-
-    .brandText{
-        text-align:center;
-        padding:0 !important;
-    }
-
-    .navbar-toggler{
-        margin-bottom:1rem;
-    }
-
-    .mobileNav{
-        width:100%;
-    }
-
-    .mobileNav .nav-item{
-        width:100%;
-    }
-
-    .navLink{
-        width:100%;
-        justify-content:center;
-        padding:1rem;
-        border-top:1px solid #eee;
-    }
-
-    .navLink::after{
-        display:none;
-    }
-
 }
