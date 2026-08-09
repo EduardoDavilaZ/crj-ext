@@ -4,8 +4,8 @@ import styles from './Hero.module.css';
 
 export default function Hero() {
     return (
-        <div className={`row bg-white rounded-3 align-items-center ${styles.heroContainer}`}>
-            <div className="col col-12 col-md-7 p-4 text-center">
+        <div className={`row bg-white rounded-3 align-items-center animate-fade-in-up ${styles.heroContainer}`}>
+            <div className="col col-12 col-md-7 px-4 px-md-4 pt-4 text-center">
                 <span className={styles.heroBadge}>Bienvenido/a a Cruz Roja Juventud</span>
                 <h1 className={`${styles.heroTitle}`}>  
                     <span className={`${styles.heroTitleAccent}`}>Si formas parte, toma parte</span>
@@ -36,7 +36,7 @@ export default function Hero() {
             </div>
 
             <div className="col col-12 col-md-5 text-center">
-                <img src={heroImg} alt="Jóvenes de Cruz Roja Juventud" className={`img-fluid  rounded ${styles.heroImg}`} />
+                <img src={heroImg} alt="Jóvenes de Cruz Roja Juventud" className={`img-fluid rounded ${styles.heroImg}`} />
             </div>
         </div>
     );

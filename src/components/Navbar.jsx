@@ -12,9 +12,8 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className={`navbar bg-white shadow-sm border-bottom sticky-top ${styles.navbarMain}`}>
+            <nav className={`navbar bg-white shadow-sm border-bottom sticky-top px-4 px-md-2 ${styles.navbarMain}`}>
                 <div className={`container d-flex justify-content-between align-items-center ${styles.navContainer}`}>
-
                     <NavLink
                         to="/"
                         onClick={closeNavbar}
@@ -80,7 +79,6 @@ export default function Navbar() {
             <div className={`${styles.drawer} ${isOpen ? styles.showDrawer : ''}`}>
                 
                 <div className={`p-3 border-bottom bg-light position-relative d-flex flex-column align-items-center justify-content-center ${styles.drawerHeader}`}>
-
                     <button
                         className={`btn border-0 p-0 shadow-none ${styles.closeXBtn}`}
                         onClick={closeNavbar}
