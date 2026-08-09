@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import ProjectCard from './ProjectCard';
+import ProjectScheduleModal from './modals/ProjectScheduleModal';
 import { projectService } from '../services/projectService';
 import catLoader from '../assets/cat-loader.gif';
 import AOS from 'aos';
@@ -8,6 +9,8 @@ import 'aos/dist/aos.css';
 export default function Projects() {
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
+    // Estado para controlar qué modal está abierto (guarda el proyecto completo o null)
+    const [selectedProjectModal, setSelectedProjectModal] = useState(null);
 
     useEffect(() => {
         AOS.init({
@@ -32,10 +35,7 @@ export default function Projects() {
     if (loading) {
         return (
             <div className="center loader">
-                <img 
-                    src={catLoader}
-                    alt="Cargando proyectos..."
-                />
+                <img src={catLoader} alt="Cargando proyectos..." />
             </div>
         );
     }
@@ -65,6 +65,7 @@ export default function Projects() {
                             formLink={`/apuntarme/${project.slug}`}
                             shifts={project.shifts}
                             isActive={project.is_active}
+                            onOpenModal={() => setSelectedProjectModal(project)}
                         />
                     </div>
                 ))}
@@ -90,10 +91,19 @@ export default function Projects() {
                             formLink={`/apuntarme/${project.slug}`}
                             shifts={project.shifts}
                             isActive={project.is_active}
+                            onOpenModal={() => setSelectedProjectModal(project)}
                         />
                     </div>
                 ))}
             </div>
+
+            {/* El modal se pinta aquí libre de AOS y de las tarjetas */}
+            <ProjectScheduleModal 
+                show={Boolean(selectedProjectModal)}
+                onClose={() => setSelectedProjectModal(null)}
+                projectId={selectedProjectModal?.id}
+                projectTitle={selectedProjectModal?.title}
+            />
         </div>
     );
 }
