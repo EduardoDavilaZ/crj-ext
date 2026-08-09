@@ -29,7 +29,9 @@ export default function ProjectCard({ id, title, description, slug, link, formLi
         <>
             <div className={`card h-100 d-flex flex-column p-4 ${styles.projectCard}`}>
                 <div className={`p-3 rounded-3 mb-3 ${styles.cardHeader}`} style={{ backgroundImage: bannerBg }}>
-                    <img src={iconSrc} alt={`Logo ${title}`} className={`${styles.projectIcon}`} />
+                    <Link to={link} className="d-inline-block text-decoration-none">
+                        <img src={iconSrc} alt={`Logo ${title}`} className={`${styles.projectIcon}`} />
+                    </Link>
                 </div>
                 
                 <div className="text-center mb-3">

@@ -2,16 +2,26 @@ import { useState, useEffect } from 'react';
 import ProjectCard from './ProjectCard';
 import { projectService } from '../services/projectService';
 import catLoader from '../assets/cat-loader.gif';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function Projects() {
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        AOS.init({
+            duration: 1500,
+            once: true,
+        });
+
         projectService.getProjects() 
             .then((data) => {
                 setProjects(data);
                 setLoading(false);
+                setTimeout(() => {
+                    AOS.refresh();
+                }, 100);
             })
             .catch((error) => {
                 console.error("Error cargando proyectos:", error);
@@ -39,8 +49,13 @@ export default function Projects() {
             <p className="text-muted mb-4">Elige un proyecto en el que quieras participar y únete al cambio.</p>
             
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                {activeProjects.map((project) => (
-                    <div className="col" key={project.id}>
+                {activeProjects.map((project, index) => (
+                    <div 
+                        className="col" 
+                        key={project.id}
+                        data-aos="fade-left"
+                        data-aos-delay={index * 100}
+                    >
                         <ProjectCard 
                             id={project.id}
                             title={project.title}
@@ -59,8 +74,13 @@ export default function Projects() {
             <p className="text-muted mb-4">Proyectos especiales que realizamos a lo largo del año. ¡Mantente atento a las próximas fechas de inscripción!</p>
             
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                {upcomingProjects.map((project) => (
-                    <div className="col" key={project.id}>
+                {upcomingProjects.map((project, index) => (
+                    <div 
+                        className="col" 
+                        key={project.id}
+                        data-aos="fade-left"
+                        data-aos-delay={index * 100}
+                    >
                         <ProjectCard 
                             id={project.id}
                             title={project.title}
