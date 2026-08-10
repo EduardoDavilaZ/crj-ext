@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import ProjectCard from './ProjectCard';
 import ProjectScheduleModal from './modals/ProjectScheduleModal';
 import { projectService } from '../services/projectService';
@@ -9,8 +10,8 @@ import 'aos/dist/aos.css';
 export default function Projects() {
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
-    // Estado para controlar qué modal está abierto (guarda el proyecto completo o null)
     const [selectedProjectModal, setSelectedProjectModal] = useState(null);
+    const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
         AOS.init({
@@ -31,6 +32,29 @@ export default function Projects() {
                 setLoading(false); 
             });
     }, []);
+
+    useEffect(() => {
+        const cuadranteParam = searchParams.get('cuadrante');
+        if (cuadranteParam && projects.length > 0) {
+            const foundProject = projects.find((p) => String(p.id) === cuadranteParam && p.is_active);
+            if (foundProject) {
+                setSelectedProjectModal(foundProject);
+            }
+        }
+    }, [searchParams, projects]);
+
+    const handleOpenModal = (project) => {
+        setSearchParams({ cuadrante: project.id });
+        setSelectedProjectModal(project);
+    };
+
+    const handleCloseModal = () => {
+        setSelectedProjectModal(null);
+        if (searchParams.has('cuadrante')) {
+            searchParams.delete('cuadrante');
+            setSearchParams(searchParams);
+        }
+    };
 
     if (loading) {
         return (
@@ -65,7 +89,7 @@ export default function Projects() {
                             formLink={`/apuntarme/${project.slug}`}
                             shifts={project.shifts}
                             isActive={project.is_active}
-                            onOpenModal={() => setSelectedProjectModal(project)}
+                            onOpenModal={() => handleOpenModal(project)}
                         />
                     </div>
                 ))}
@@ -91,18 +115,18 @@ export default function Projects() {
                             formLink={`/apuntarme/${project.slug}`}
                             shifts={project.shifts}
                             isActive={project.is_active}
-                            onOpenModal={() => setSelectedProjectModal(project)}
+                            onOpenModal={() => handleOpenModal(project)}
                         />
                     </div>
                 ))}
             </div>
 
-            {/* El modal se pinta aquí libre de AOS y de las tarjetas */}
             <ProjectScheduleModal 
                 show={Boolean(selectedProjectModal)}
-                onClose={() => setSelectedProjectModal(null)}
+                onClose={handleCloseModal}
                 projectId={selectedProjectModal?.id}
                 projectTitle={selectedProjectModal?.title}
+                project={selectedProjectModal}
             />
         </div>
     );
