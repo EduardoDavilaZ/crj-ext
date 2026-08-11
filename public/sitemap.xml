@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://crj-ext.vercel.app/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://crj-ext.vercel.app/ayuda</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Infancia Hospitalizada -->
+    <url>
+        <loc>https://crj-ext.vercel.app/proyecto/infancia-hospitalizada</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://crj-ext.vercel.app/apuntarme/infancia-hospitalizada</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Éxito Escolar -->
+    <url>
+        <loc>https://crj-ext.vercel.app/proyecto/exito-escolar</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://crj-ext.vercel.app/apuntarme/exito-escolar</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Espacios Educativos -->
+    <url>
+        <loc>https://crj-ext.vercel.app/proyecto/espacios-educativos</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://crj-ext.vercel.app/apuntarme/espacios-educativos</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Espacio Propio -->
+    <url>
+        <loc>https://crj-ext.vercel.app/proyecto/espacio-propio</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://crj-ext.vercel.app/apuntarme/espacio-propio</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Juguete Educativo -->
+    <url>
+        <loc>https://crj-ext.vercel.app/proyecto/juguete-educativo</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://crj-ext.vercel.app/apuntarme/juguete-educativo</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- No te pases -->
+    <url>
+        <loc>https://crj-ext.vercel.app/proyecto/no-te-pases</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://crj-ext.vercel.app/apuntarme/no-te-pases</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- ESIE -->
+    <url>
+        <loc>https://crj-ext.vercel.app/proyecto/esie</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://crj-ext.vercel.app/apuntarme/esie</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+</urlset>
