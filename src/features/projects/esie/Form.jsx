@@ -61,8 +61,7 @@ export default function Form() {
                         Inscríbete para colaborar en los Equipos de Sensibilización e Información ante Emergencias.
                     </span>
                     <span className='kudos d-block my-2 datetime'>
-                        Turno mañana: 10:00 - 14:00 <br />
-                        Turno mañana: 16:00 - 20:00
+                        Horario: 14:00 - 23:00
                     </span>
                 </div>
                 
@@ -94,7 +93,7 @@ export default function Form() {
                         setActiveLocation={setActiveLocation}
                         extraContent={
                             <>
-                                <label className='form-label fw-bold d-block mb-2'>Selecciona tus turnos por centro y día:</label>
+                                <label className='form-label fw-bold d-block mb-2'>Selecciona tus turnos:</label>
                                 <span className='kudos d-block datetime my-2'>{getCurrentWeekRange()}</span>
                                 {errors.shifts && <div className="error mt-1">{errors.shifts}</div>}
                             </>
