@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://api-crj.eduardodavila.es',
+    baseURL: 'http://localhost:8000',
+    // baseURL: 'https://api-crj.eduardodavila.es',
     withCredentials: true,
     xsrfCookieName: 'XSRF-TOKEN',
     xsrfHeaderName: 'X-XSRF-TOKEN',

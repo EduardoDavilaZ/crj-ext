@@ -1,0 +1,50 @@
+.imageWrapper {
+    overflow: hidden;
+}
+
+.imageWrapper img:hover {
+    transform: scale(1.05);
+}
+
+.memeCard {
+    width: 100%;
+    margin: 2rem 0rem;
+    border-radius: 1rem;
+    border: var(--border-primary);
+    box-shadow: var(--shadow-primary);
+    overflow: hidden;
+    
+    .memeImageBody {
+        .memeImage {
+            width: 100%;
+        }
+    }
+
+    .memeFooter {
+        padding: .5rem;
+        background-color: var(--c-primary);
+
+        .memeDate {
+            font-size: .75rem;
+            color: white;
+            align-self: auto;
+            margin: .25rem;
+            text-align: right;
+        }
+    }
+
+    @media (min-width: 768px) {
+        width: 80%;
+        margin: 1.5rem 0rem;
+    }
+
+    @media (min-width: 1024px) {
+        width: 65%;
+        margin: .5rem 0rem;
+    }
+
+    @media (min-width: 1200px) {
+        width: 45%;
+        margin: 0rem 0rem;
+    }
+}
