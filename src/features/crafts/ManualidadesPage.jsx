@@ -2,14 +2,10 @@ import { useState, useEffect } from 'react';
 
 import MainLayout from '../../layouts/MainLayout';
 import catLoader from '../../assets/cat-loader.gif';
-
 import { craftService } from '../../services/craftService';
-
 import styles from './ManualidadesPage.module.css';
 
-
 export default function ManualidadesPage() {
-
     // Pasos del asistente:
     // 1 (Edad), 2 (Resultado aleatorio)
     const [step, setStep] = useState(1);
