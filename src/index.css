@@ -132,6 +132,24 @@ button {
     color: var(--c-accent);
 }
 
+.badge-primary {
+    border: 1px solid var(--c-accent);
+    color: var(--c-accent);
+    border-radius: 1rem;
+    font-size: .75rem;
+    padding: .5rem .75rem;
+    margin: 0rem .25rem;
+}
+
+.badge-deep {
+    border: 1px solid var(--c-deep);
+    color: var(--c-deep);
+    font-size: .75rem;
+    border-radius: 1rem;
+    padding: .5rem .75rem;
+    margin: 0rem .25rem;
+}
+
 .loader {
     margin: 2rem 0rem;
     img {

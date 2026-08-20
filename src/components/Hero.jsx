@@ -5,7 +5,7 @@ import styles from './Hero.module.css';
 export default function Hero() {
     return (
         <div className={`row bg-white rounded-3 align-items-center animate-fade-in-up ${styles.heroContainer}`}>
-            <div className="col col-12 col-md-7 px-4 px-md-4 pt-4 text-center">
+            <div className="col col-12 col-md-7 px-4 px-md-4 pt-4 pb-2 text-center">
                 <span className={styles.heroBadge}>Bienvenido/a a Cruz Roja Juventud</span>
                 <h1 className={`${styles.heroTitle}`}>  
                     <span className={`${styles.heroTitleAccent}`}>Si formas parte, toma parte</span>
