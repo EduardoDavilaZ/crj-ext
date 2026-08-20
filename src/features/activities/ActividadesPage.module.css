@@ -1,0 +1,59 @@
+.cardStep {
+    width: 100%;
+    margin: 0 auto;
+    border: none;
+    border-radius: 1rem;
+    padding: 2rem 1rem;
+    border: var(--border-primary);
+    box-shadow: var(--shadow-primary);
+
+    @media (min-width: 768px) {
+        width: 70%;
+    }
+
+    @media (min-width: 1024px) {
+        width: 50%;
+    }
+}
+
+.optionsContainer {
+    margin-top: 1.5rem;
+}
+
+.optionBtn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid var(--c-accent);
+    background-color: #f9f5f5;
+    color: var(--c-deep);
+}
+
+.optionBtn:hover {
+    transform: scale(1.05);
+    background-color: #fcebec;
+}
+
+.backBtn {
+    text-decoration: none;
+}
+
+.loaderContainer {
+    padding: 3rem 0;
+}
+
+.loaderImage {
+    width: 80px;
+}
+
+.resultCard {
+    max-width: 600px;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.resultImage {
+    object-fit: cover;
+    height: 300px;
+}

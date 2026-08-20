@@ -27,6 +27,10 @@ import NtpForm from './features/projects/no-te-pases/Form';
 import EsieInfo from './features/projects/esie/InfoPage';
 import EsieForm from './features/projects/esie/Form';
 
+import MemesPage from './features/memes/MemesPage';
+import ActividadesPage from './features/activities/ActividadesPage';
+import ManualidadesPage from './features/crafts/ManualidadesPage';
+
 export default function App() {
   return (
     <Router>
@@ -55,6 +59,11 @@ export default function App() {
 
         <Route path="/proyecto/esie" element={<EsieInfo />} />
         <Route path="/apuntarme/esie" element={<EsieForm />} />
+
+        <Route path="/zona-feliz/memes" element={<MemesPage />} />
+        <Route path="/zona-feliz/actividades" element={<ActividadesPage />} />
+        <Route path="/zona-feliz/manualidades" element={<ManualidadesPage />} />
+
       </Routes>
     </Router>
   );
