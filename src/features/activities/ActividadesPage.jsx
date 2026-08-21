@@ -164,7 +164,7 @@ export default function ActividadesPage() {
                                             <h4 className="card-title my-4 c-accent">{randomActivity.name}</h4>
                                             <p className="card-text text-muted">{randomActivity.description}</p>
 
-                                            <div className='my-2'>
+                                            <div className='my-2 d-flex'>
                                                 <span className="badge-primary">
                                                     {randomActivity.activity_type?.name}
                                                 </span>
