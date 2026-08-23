@@ -13,7 +13,6 @@ export default function ProjectInfoPage({
     subtitle,
     description,
     slug,
-    ogImage,
     whatWeDo,
     image,
     infoCards = [],
