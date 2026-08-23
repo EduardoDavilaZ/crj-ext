@@ -4,6 +4,7 @@ import { feedbackService } from '../services/feedbackService';
 import FeedbackModal from '../components/modals/FeedbackModal';
 import AnonymousSuccessModal from '../components/modals/AnonymousSuccessModal';
 import Swal from 'sweetalert2';
+import SEO from '../components/SEO';
 
 export default function Help() {
     const [name, setName] = useState('');
@@ -58,6 +59,13 @@ export default function Help() {
 
     return (
         <MainLayout>
+            <SEO
+                title="CRJ Tierras de Badajoz"
+                description="Cruz Roja Juventud en Badajoz: descubre nuestros proyectos, actividades, voluntariado y oportunidades para participar con jóvenes y en la comunidad."
+                canonical="https://crj-ext.vercel.app/"
+                image="https://crj-ext.vercel.app/og-image.png"
+            />
+
             <div className='container'>
                 <h1 className='h1'>Bienvenid@ al canal de soporte y ayuda al voluntariado</h1>
                 <p className='subtitle'>
