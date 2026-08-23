@@ -1,12 +1,10 @@
-import { NextResponse } from 'next/server';
-
-export function middleware(request) {
+export default async function middleware(request) {
     const userAgent = request.headers.get('user-agent') || '';
     
     const botPattern = /bot|crawl|slifer|whatsapp|facebookexternalhit|twitterbot|linkedinbot|telegrambot|pinterest/i;
 
     if (!botPattern.test(userAgent)) {
-        return NextResponse.next();
+        return;
     }
 
     const url = new URL(request.url);
@@ -16,7 +14,7 @@ export function middleware(request) {
     const slug = match ? match[2] : null;
 
     if (!slug) {
-        return NextResponse.next();
+        return;
     }
 
     const formattedTitle = slug
@@ -56,7 +54,7 @@ export function middleware(request) {
     </body>
     </html>`;
 
-    return new NextResponse(html, {
+    return new Response(html, {
         headers: { 'content-type': 'text/html;charset=UTF-8' },
     });
 }
