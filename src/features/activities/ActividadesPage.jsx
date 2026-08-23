@@ -3,6 +3,7 @@ import MainLayout from '../../layouts/MainLayout';
 import catLoader from '../../assets/cat-loader.gif';
 import { activityService } from '../../services/activityService';
 import styles from './ActividadesPage.module.css';
+import SEO from '../../components/SEO';
 
 export default function ActividadesPage() {
     // Pasos del asistente: 1 (Tipo), 2 (Edad), 3 (Resultado Aleatorio)
@@ -65,13 +66,16 @@ export default function ActividadesPage() {
 
     return (
         <MainLayout>
+            <SEO
+                title="Actividades para niños y jóvenes"
+                description="Encuentra juegos y actividades para niños, niñas y jóvenes organizados por edades para utilizar en actividades de Cruz Roja Juventud."
+                canonical="https://crj-ext.vercel.app/zona-feliz/actividades"
+                image="https://crj-ext.vercel.app/og/actividades.png"
+            />
+
             <div className='container'>
-                <h1 className='h1 text-center'>
-                    Actividades de ocio y tiempo libre
-                </h1>
-                <p className='text-center'>
-                    ¿Qué hacer hoy? Yo te ayudo con eso
-                </p>
+                <h1 className='h1 text-center'>Actividades de ocio</h1>
+                <p className='text-center'>¿Qué hacer hoy? Yo te ayudo con eso!!!</p>
 
                 {/* PASO 1: TIPO DE ACTIVIDAD */}
                 {step === 1 && (
@@ -165,12 +169,8 @@ export default function ActividadesPage() {
                                             <p className="card-text text-muted">{randomActivity.description}</p>
 
                                             <div className='my-2 d-flex'>
-                                                <span className="badge-primary">
-                                                    {randomActivity.activity_type?.name}
-                                                </span>
-                                                <span className="badge-deep">
-                                                    {randomActivity.participants_min} - {randomActivity.participants_max} participantes
-                                                </span>
+                                                <span className="badge-primary"> {randomActivity.activity_type?.name} </span>
+                                                <span className="badge-deep"> {randomActivity.participants_min} - {randomActivity.participants_max} participantes </span>
                                             </div>
 
                                             <h6 className='mt-4'>Materiales</h6>

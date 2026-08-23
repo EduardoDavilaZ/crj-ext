@@ -1,43 +1,56 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import heroImg from '../assets/hero-crj-img.png';
 import styles from './Hero.module.css';
+import VolunteerModal from './modals/VolunteerModal';
 
 export default function Hero() {
+
+    const [showVolunteerModal, setShowVolunteerModal] = useState(false);
+
     return (
-        <div className={`row bg-white rounded-3 align-items-center animate-fade-in-up ${styles.heroContainer}`}>
-            <div className="col col-12 col-md-7 px-4 px-md-4 pt-4 pb-2 text-center">
-                <span className={styles.heroBadge}>Bienvenido/a a Cruz Roja Juventud</span>
-                <h1 className={`${styles.heroTitle}`}>  
-                    <span className={`${styles.heroTitleAccent}`}>Si formas parte, toma parte</span>
-                </h1>
-                <p className={`mb-4 ${styles.heroDescription}`}>
-                    Súmate al voluntariado que mueve <span className='c-sage fw-semibold'>Badajoz</span>. Comparte tu energía, participa en proyectos reales y haz que las cosas pasen en tu ciudad.
-                </p>
+        <>
+            <div className={`row m-0 bg-white rounded-3 align-items-center animate-fade-in-up ${styles.heroContainer}`}>
+                <div className="col col-12 col-md-7 px-4 px-md-4 pt-4 pb-2 text-center">
+                    <span className={styles.heroBadge}>Bienvenido/a a Cruz Roja Juventud</span>
+                    <h1 className={`${styles.heroTitle}`}>  
+                        <span className={`${styles.heroTitleAccent}`}>Si formas parte, toma parte</span>
+                    </h1>
+                    <p className={`mb-4 ${styles.heroDescription}`}>
+                        Súmate al voluntariado que mueve <span className='c-sage fw-semibold'>Badajoz</span>. Comparte tu energía, participa en proyectos reales y haz que las cosas pasen en tu ciudad.
+                    </p>
 
-                <div className="d-flex flex-wrap justify-content-center gap-3">
-                    <a 
-                        href="https://www2.cruzroja.es/alta-voluntario-web" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="btn-accent d-flex align-items-center gap-2 px-4 py-2 rounded-3"
-                    >
-                        <i className="bi bi-heart-fill"></i> Hazte voluntario
-                    </a>
+                    <div className="d-flex flex-wrap justify-content-center gap-3">
+                        <button
+                            type="button"
+                            className="btn-accent d-flex align-items-center gap-2 px-4 py-2 rounded-3 border-0"
+                            onClick={() => setShowVolunteerModal(true)}
+                        >
+                            <i className="bi bi-heart-fill"></i>
+                            Hazte voluntario
+                        </button>
 
-                    <a 
-                        href="https://www.cruzrojajuventud.org/quienes-somos" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="btn-gray px-4 py-2 rounded-3"
-                    >
-                        <i className="bi bi-search-heart"></i> Conócenos más
-                    </a>
+                        <a 
+                            href="https://www.cruzrojajuventud.org/quienes-somos" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="btn-gray px-4 py-2 rounded-3"
+                        >
+                            <i className="bi bi-search-heart"></i> Conócenos más
+                        </a>
+                    </div>
+                </div>
+
+                <div className="col col-12 col-md-5 text-center">
+                    <img src={heroImg} alt="Jóvenes de Cruz Roja Juventud" className={`img-fluid rounded ${styles.heroImg}`} />
                 </div>
             </div>
 
-            <div className="col col-12 col-md-5 text-center">
-                <img src={heroImg} alt="Jóvenes de Cruz Roja Juventud" className={`img-fluid rounded ${styles.heroImg}`} />
-            </div>
-        </div>
+            {showVolunteerModal && (
+                <VolunteerModal
+                    onClose={() => setShowVolunteerModal(false)}
+                />
+            )}
+        </>
     );
 }

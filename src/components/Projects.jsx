@@ -69,7 +69,7 @@ export default function Projects() {
 
     return (
         <div className="container p-0">
-            <h2 className="mt-5 fw-bold text-dark">Proyectos <span className='c-accent'>Activos</span></h2>
+            <h2 className="mt-2 fw-bold text-dark">Proyectos <span className='c-accent'>Activos</span></h2>
             <p className="text-muted mb-4">Elige un proyecto en el que quieras participar y únete al cambio.</p>
             
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">

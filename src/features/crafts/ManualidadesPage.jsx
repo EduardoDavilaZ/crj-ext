@@ -4,6 +4,7 @@ import MainLayout from '../../layouts/MainLayout';
 import catLoader from '../../assets/cat-loader.gif';
 import { craftService } from '../../services/craftService';
 import styles from './ManualidadesPage.module.css';
+import SEO from '../../components/SEO';
 
 export default function ManualidadesPage() {
     // Pasos del asistente:
@@ -61,29 +62,24 @@ export default function ManualidadesPage() {
 
     return (
         <MainLayout>
+            <SEO
+                title="Manualidades para niños y jóvenes"
+                description="Ideas de manualidades para niños, niñas y jóvenes clasificadas por edades para actividades de Cruz Roja Juventud."
+                canonical="https://crj-ext.vercel.app/zona-feliz/manualidades"
+                image="https://crj-ext.vercel.app/og/manualidades.png"
+            />
+
             <div className="container">
-                <h1 className="h1 text-center">
-                    Manualidades
-                </h1>
-
-                <p className="text-center">
-                    ¿Qué manualidad podemos hacer? Yo te ayudo con eso
-                </p>
-
+                <h1 className="h1 text-center">Manualidades</h1>
+                <p className="text-center">¿Qué manualidad podemos hacer? Yo te ayudo con eso!!!</p>
 
                 {/* PASO 1: RANGO DE EDAD */}
 
                 {step === 1 && (
                     <div className={styles.cardStep}>
                         <div className="card-body text-center">
-                            <h3 className="card-title">
-                                ¿Para quién?
-                            </h3>
-
-                            <p className="text-muted">
-                                Selecciona el rango de edad de los participantes.
-                            </p>
-
+                            <h3 className="card-title"> ¿Para quién? </h3>
+                            <p className="text-muted"> Selecciona el rango de edad de los participantes. </p>
 
                             {ageRanges.length === 0 ? (
                                 <div className={styles.loaderContainer}>
@@ -92,9 +88,7 @@ export default function ManualidadesPage() {
                                         alt="Cargando..."
                                         className={styles.loaderImage}
                                     />
-                                    <p className="mt-3 text-muted">
-                                        Cargando opciones...
-                                    </p>
+                                    <p className="mt-3 text-muted"> Cargando opciones... </p>
                                 </div>
 
                             ) : (
@@ -130,41 +124,25 @@ export default function ManualidadesPage() {
                                         className={styles.loaderImage}
                                     />
 
-                                    <p className="text-muted">
-                                        Buscando y eligiendo una manualidad...
-                                    </p>
-
+                                    <p className="text-muted"> Buscando y eligiendo una manualidad... </p>
                                 </div>
 
                             ) : randomCraft ? (
                                 <div className={styles.resultContainer}>
-                                    <h2 className="card-title mb-4">
-                                        ✨ ¡Te recomiendo esta manualidad!
-                                    </h2>
+                                    <h2 className="card-title mb-4"> ✨ ¡Te recomiendo esta manualidad! </h2>
 
                                     <div className={styles.resultCard}>
                                         {randomCraft.image_url && (
-                                            <img
-                                                src={randomCraft.image_url}
-                                                className={styles.resultImage}
-                                                alt={randomCraft.name}
-                                            />
+                                            <img src={randomCraft.image_url} className={styles.resultImage} alt={randomCraft.name} />
                                         )}
 
                                         <div className="card-body text-start">
-                                            <h4 className="card-title my-4 c-accent">
-                                                {randomCraft.name}
-                                            </h4>
-
-                                            <p className="card-text text-muted">
-                                                {randomCraft.description}
-                                            </p>
+                                            <h4 className="card-title my-4 c-accent"> {randomCraft.name} </h4>
+                                            <p className="card-text text-muted"> {randomCraft.description} </p>
 
                                             <hr />
 
-                                            <h6>
-                                                Materiales
-                                            </h6>
+                                            <h6> Materiales </h6>
 
                                             {randomCraft.materials?.length > 0 ? (
                                                 <ul className="small">
@@ -178,44 +156,26 @@ export default function ManualidadesPage() {
                                                 </ul>
                                             ) : (
                                                 <p className="text-muted small">
-                                                    <i className="bi bi-clipboard-x"></i>
-                                                    {' '}No necesita materiales
+                                                    <i className="bi bi-clipboard-x"></i> {' '}No necesita materiales
                                                 </p>
                                             )}
 
                                             <hr />
-                                            <h6>
-                                                Instrucciones
-                                            </h6>
+                                            <h6> Instrucciones </h6>
 
-                                            <p className="small">
-                                                {randomCraft.instructions}
-                                            </p>
+                                            <p className="small"> {randomCraft.instructions} </p>
                                         </div>
                                     </div>
 
-                                    <button
-                                        className="btn btn-accent px-4 my-2 fw-semibold"
-                                        onClick={handleReset}
-                                    >
-                                        <i className="bi bi-arrow-clockwise"></i>
-                                        {' '}Buscar otra manualidad
+                                    <button className="btn btn-accent px-4 my-2 fw-semibold" onClick={handleReset} >
+                                        <i className="bi bi-arrow-clockwise"></i> {' '}Buscar otra manualidad
                                     </button>
                                 </div>
                             ) : (
 
                                 <div className={styles.noResultContainer}>
-                                    <p className="text-muted">
-                                        No hemos encontrado manualidades
-                                        para este rango de edad.
-                                    </p>
-
-                                    <button
-                                        className="btn btn-secondary"
-                                        onClick={handleReset}
-                                    >
-                                        Intentar de nuevo
-                                    </button>
+                                    <p className="text-muted"> No hemos encontrado manualidades para este rango de edad. </p>
+                                    <button className="btn btn-secondary" onClick={handleReset} > Intentar de nuevo </button>
                                 </div>
                             )}
                         </div>
