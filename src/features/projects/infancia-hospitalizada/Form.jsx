@@ -8,7 +8,6 @@ export default function Form() {
                 slug={config.slug}
                 projectTitle={config.projectTitle}
                 {...config.form}
-                instructions={<FormInstructions />}
             />
         </>
     );
