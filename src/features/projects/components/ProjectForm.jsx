@@ -47,7 +47,6 @@ export default function ProjectForm({
     instructions,
     disableSubmitWhenSubmitting = false,
 }) {
-    const { slug: routeSlug } = useParams();
     const [needsVest, setNeedsVest] = useState(false);
     const [errors, setErrors] = useState({});
 
@@ -66,7 +65,7 @@ export default function ProjectForm({
         setShowSuccessModal,
         handleCheckboxChange,
         handleSubmit: submitFormAction,
-    } = useProjectForm(routeSlug || slug, defaultTitle);
+    } = useProjectForm(slug, defaultTitle);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -115,8 +114,8 @@ export default function ProjectForm({
             <SEO
                 title={`Apuntarse a ${projectTitle}`}
                 description={`Apúntate al proyecto ${projectTitle} de Cruz Roja Juventud en Badajoz.`}
-                canonical={`https://crj-ext.vercel.app/apuntarme/${routeSlug || slug}`}
-                image={`https://crj-ext.vercel.app/og/${routeSlug || slug}.png`}
+                canonical={`https://crj-ext.vercel.app/apuntarme/${slug}`}
+                image={`https://crj-ext.vercel.app/og/${slug}.png`}
                 noIndex={true}
             />
 
