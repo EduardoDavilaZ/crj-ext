@@ -117,6 +117,7 @@ export default function ProjectForm({
                 description={`Apúntate al proyecto ${projectTitle} de Cruz Roja Juventud en Badajoz.`}
                 canonical={`https://crj-ext.vercel.app/apuntarme/${routeSlug || slug}`}
                 image={`https://crj-ext.vercel.app/og/${routeSlug || slug}.png`}
+                noIndex={true}
             />
 
             <div className="container form-container">
