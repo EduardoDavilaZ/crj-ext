@@ -7,6 +7,7 @@ import { useProjectForm } from '../../../hooks/useProjectForm';
 import { getCurrentWeekRange } from '../../../utils/dateUtils';
 import SuccessModal from '../../../components/modals/SuccessModal';
 import { validateName, validateSelections } from '../../../utils/validators';
+import SEO from '../../../components/SEO';
 
 const DEFAULT_SHIFT_LABEL = 'Selecciona tus turnos por centro y día:';
 const DEFAULT_VEST_LABEL = '¿Te hace falta chaleco?';
@@ -111,6 +112,13 @@ export default function ProjectForm({
 
     return (
         <MainLayout>
+            <SEO
+                title={`Apuntarse a ${projectTitle}`}
+                description={`Apúntate al proyecto ${projectTitle} de Cruz Roja Juventud en Badajoz.`}
+                canonical={`https://crj-ext.vercel.app/apuntarme/${routeSlug || slug}`}
+                image={`https://crj-ext.vercel.app/og/${routeSlug || slug}.png`}
+            />
+
             <div className="container form-container">
                 <h1 className="h1 my-4">{projectTitle}</h1>
 
