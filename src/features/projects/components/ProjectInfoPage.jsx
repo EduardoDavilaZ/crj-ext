@@ -1,4 +1,5 @@
 import MainLayout from '../../../layouts/MainLayout';
+import SEO from '../../../components/SEO';
 
 function normalizeIconClass(icon) {
     if (!icon) return 'bi bi-info-circle';
@@ -10,6 +11,9 @@ function normalizeIconClass(icon) {
 export default function ProjectInfoPage({
     title,
     subtitle,
+    description,
+    slug,
+    ogImage,
     whatWeDo,
     image,
     infoCards = [],
@@ -19,6 +23,13 @@ export default function ProjectInfoPage({
 
     return (
         <MainLayout>
+            <SEO
+                title={title}
+                description={description}
+                canonical={`https://crj-ext.vercel.app/proyecto/${slug}`}
+                image={`https://crj-ext.vercel.app/og/${slug}.png`}
+            />
+            
             <div className="container">
                 <h1 className="h1">{title}</h1>
                 <p className="subtitle">{subtitle}</p>

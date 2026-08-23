@@ -3,6 +3,7 @@ import { memeService } from '../../services/memeService';
 import MemeCard from './components/MemeCard';
 import MainLayout from '../../layouts/MainLayout';
 import catLoader from '../../assets/cat-loader.gif';
+import SEO from '../../components/SEO';
 
 export default function MemesPage() {
     const [memes, setMemes] = useState([]);
@@ -62,10 +63,15 @@ export default function MemesPage() {
     return (
         <MainLayout>
             <div className="container">
+                <SEO
+                    title="Memes de Cruz Roja Juventud"
+                    description="Memes y contenido de humor de Cruz Roja Juventud para nuestra comunidad de voluntariado."
+                    canonical="https://crj-ext.vercel.app/zona-feliz/memes"
+                    image="https://crj-ext.vercel.app/og/memes.png"
+                />
+
                 <h1 className='h1 text-center'>El lado menos serio de CRJ</h1>
-                <p className='subtitle text-center'>
-                    No podemos ser serios todo el tiempo, ¿no?
-                </p>
+                <p className='subtitle text-center'>No podemos ser serios todo el tiempo, ¿no?</p>
 
                 <div className="d-flex flex-column align-items-center gap-4">
                     {memes.map((meme, index) => (
